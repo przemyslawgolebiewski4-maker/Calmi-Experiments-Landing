@@ -429,15 +429,16 @@
         <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:24px;padding:36px">
           <h3 style="font-size:20px;font-weight:600;margin-bottom:8px">Get in touch</h3>
           <p style="font-size:14px;color:var(--muted);margin-bottom:28px">Tell us about your practice and how many clients you'd like to onboard.</p>
-          <iframe
-            src="https://lelekstudio.com/calmi-experiments-contact/"
-            scrolling="no"
-            style="width:100%;border:none;min-height:560px;border-radius:12px"
-            title="Contact form">
-          </iframe>
-          <p style="margin-top:16px;font-size:13px;color:var(--muted);text-align:center">
-            Or email directly: <a href="mailto:lelekstudio@lelekstudio.com" style="color:var(--purple-l)">lelekstudio@lelekstudio.com</a>
-          </p>
+          <form id="cf" onsubmit="sf(event)">
+            <div style="margin-bottom:16px"><label style="display:block;font-size:13px;color:var(--muted);margin-bottom:6px">Your name</label><input type="text" id="fn" required placeholder="Jane Smith" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-size:15px;outline:none;font-family:'DM Sans',sans-serif" onfocus="this.style.borderColor='rgba(124,58,237,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.07)'" /></div>
+            <div style="margin-bottom:16px"><label style="display:block;font-size:13px;color:var(--muted);margin-bottom:6px">Your email</label><input type="email" id="fe" required placeholder="jane@yourpractice.com" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-size:15px;outline:none;font-family:'DM Sans',sans-serif" onfocus="this.style.borderColor='rgba(124,58,237,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.07)'" /></div>
+            <div style="margin-bottom:16px"><label style="display:block;font-size:13px;color:var(--muted);margin-bottom:6px">I am a...</label><select id="fr" required style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-size:15px;outline:none;font-family:'DM Sans',sans-serif;cursor:pointer"><option value="" disabled selected>Select your role</option><option value="Coach">Coach</option><option value="Therapist">Therapist</option><option value="Other professional">Other professional</option></select></div>
+            <div style="margin-bottom:16px"><label style="display:block;font-size:13px;color:var(--muted);margin-bottom:6px">Number of clients</label><select id="fc" required style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-size:15px;outline:none;font-family:'DM Sans',sans-serif;cursor:pointer"><option value="" disabled selected>How many clients?</option><option value="1-5">1-5 clients</option><option value="6-15">6-15 clients</option><option value="16-30">16-30 clients</option><option value="30+">30+ clients</option></select></div>
+            <div style="margin-bottom:24px"><label style="display:block;font-size:13px;color:var(--muted);margin-bottom:6px">Message (optional)</label><textarea id="fm" rows="3" placeholder="Tell us about your practice..." style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-size:15px;outline:none;font-family:'DM Sans',sans-serif;resize:vertical" onfocus="this.style.borderColor='rgba(124,58,237,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.07)'"></textarea></div>
+            <button type="submit" style="width:100%;background:var(--purple);color:#fff;border:none;border-radius:12px;padding:16px;font-size:16px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif">Send message →</button>
+            <div id="fs" style="display:none;margin-top:16px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:14px;text-align:center;color:#10b981;font-size:14px">✓ Message sent! We'll get back to you within 24 hours.</div>
+            <div id="fer" style="display:none;margin-top:16px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:14px;text-align:center;color:#ef4444;font-size:14px">Something went wrong. Email: <a href="mailto:lelekstudio@lelekstudio.com" style="color:#ef4444">lelekstudio@lelekstudio.com</a></div>
+          </form>
         </div>
       </div>
     </div>
@@ -467,7 +468,8 @@
   </div>
 </footer>
 <script>
-function switchTab(id){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active')});document.querySelector('[onclick="switchTab(\''+id+'\')"]').classList.add('active');document.getElementById('tab-'+id).classList.add('active')}
+function switchTab(id){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active')});document.querySelector('[onclick="switchTab(''+id+'')"]').classList.add('active');document.getElementById('tab-'+id).classList.add('active')}
+function sf(e){e.preventDefault();var n=document.getElementById('fn').value.trim();var em=document.getElementById('fe').value.trim();var r=document.getElementById('fr').value;var c=document.getElementById('fc').value;var m=document.getElementById('fm').value.trim();var s=encodeURIComponent('[Calmi Experiments] License inquiry - '+r);var b=encodeURIComponent('Hello,\n\nI am interested in licenses for my clients.\n\nName: '+n+'\nEmail: '+em+'\nRole: '+r+'\nClients: '+c+(m?'\n\nMessage:\n'+m:'')+'\n\n---\nSent from Calmi Experiments landing page');try{window.location.href='mailto:lelekstudio@lelekstudio.com?subject='+s+'&body='+b;document.getElementById('fs').style.display='block';document.getElementById('fer').style.display='none';document.getElementById('cf').reset()}catch(err){document.getElementById('fer').style.display='block'}}
 var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1});document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el)});
 </script>
 </body>
