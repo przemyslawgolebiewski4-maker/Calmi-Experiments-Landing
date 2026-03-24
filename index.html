@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calmi Experiments — Small experiments. Real self-knowledge.</title>
+  <meta name="description" content="Calmi Experiments helps neurodivergent individuals, coaches, and therapists run small life experiments and discover what actually works — without pressure, without judgment." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0e0e18;
+      --surface:   #14142a;
+      --surface2:  #1a1a38;
+      --border:    rgba(255,255,255,0.07);
+      --purple:    #7c3aed;
+      --purple-l:  #9d65f5;
+      --amber:     #f59e0b;
+      --green:     #10b981;
+      --red:       #ef4444;
+      --text:      #f0f0f8;
+      --muted:     #8e8ea8;
+      --card-bg:   rgba(255,255,255,0.04);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(14,14,24,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--purple-l); }
+
+    nav .cta-small {
+      background: var(--purple);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    nav .cta-small:hover { background: var(--purple-l); transform: translateY(-1px); }
+
+    /* ── SECTIONS ── */
+    section { position: relative; z-index: 1; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%);
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.3);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: var(--purple-l);
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .hero-label .dot {
+      width: 6px; height: 6px;
+      background: var(--purple-l);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(42px, 5vw, 64px);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--purple-l);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 460px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--purple);
+      color: #fff;
+      padding: 16px 32px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 8px 30px rgba(124,58,237,0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--purple-l);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(124,58,237,0.45);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 15px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--text); }
+
+    /* ── HERO VISUAL ── */
+    .hero-visual {
+      position: relative;
+    }
+
+    .phone-mockup {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone-mockup::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, transparent 60%);
+    }
+
+    .mock-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .mock-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+    }
+
+    .mock-badge {
+      background: rgba(16,185,129,0.15);
+      color: var(--green);
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .mock-exp {
+      background: rgba(124,58,237,0.12);
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .mock-exp-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--purple-l);
+      margin-bottom: 6px;
+    }
+
+    .mock-exp-title {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .mock-exp-meta {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .mock-checkins {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mock-checkin {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+
+    .energy-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .energy-high { background: var(--green); }
+    .energy-medium { background: var(--amber); }
+    .energy-low { background: var(--red); }
+
+    .checkin-text {
+      font-size: 13px;
+      color: var(--muted);
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .checkin-day {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .trust-inner {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .trust-icon {
+      font-size: 18px;
+    }
+
+    /* ── PROBLEM SECTION ── */
+    #problem {
+      padding: 120px 0;
+    }
+
+    .section-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--purple-l);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    h2 em {
+      font-style: italic;
+      color: var(--purple-l);
+    }
+
+    .section-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .problem-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .problem-card:hover {
+      border-color: rgba(124,58,237,0.3);
+      transform: translateY(-4px);
+    }
+
+    .problem-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .problem-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .problem-card p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── HOW IT WORKS ── */
+    #how {
+      padding: 120px 0;
+      background: var(--surface);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .step {
+      position: relative;
+    }
+
+    .step-number {
+      width: 44px; height: 44px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.3);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: var(--purple-l);
+      margin-bottom: 20px;
+    }
+
+    .step h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .step p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .step-connector {
+      position: absolute;
+      top: 22px;
+      right: -20px;
+      color: rgba(124,58,237,0.3);
+      font-size: 20px;
+    }
+
+    /* ── AUDIENCE TABS ── */
+    #audience {
+      padding: 120px 0;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin: 48px 0 40px;
+      background: var(--surface);
+      padding: 6px;
+      border-radius: 16px;
+      width: fit-content;
+    }
+
+    .tab {
+      padding: 10px 24px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: var(--muted);
+      border: none;
+      background: transparent;
+    }
+
+    .tab.active {
+      background: var(--purple);
+      color: #fff;
+    }
+
+    .tab:hover:not(.active) { color: var(--text); }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+
+    .audience-text h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 36px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .audience-text p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .feature-list li::before {
+      content: '✦';
+      color: var(--purple-l);
+      font-size: 12px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .audience-visual {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .audience-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(124,58,237,0.06) 0%, transparent 60%);
+    }
+
+    .quote-card {
+      background: rgba(124,58,237,0.1);
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .quote-card p {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    .quote-card .quote-author {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    .mini-stat {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+
+    .mini-stat-icon { font-size: 20px; }
+
+    .mini-stat-text {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .mini-stat-text strong {
+      color: var(--text);
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    /* ── PDF SECTION ── */
+    #pdf-section {
+      padding: 100px 0;
+      background: var(--surface);
+    }
+
+    .pdf-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .pdf-preview {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+      color: #1a1a2e;
+    }
+
+    .pdf-header {
+      border-bottom: 2px solid #7c3aed;
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .pdf-brand {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #7c3aed;
+      margin-bottom: 4px;
+    }
+
+    .pdf-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+
+    .pdf-meta {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .pdf-section-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #7c3aed;
+      margin: 16px 0 8px;
+      font-weight: 600;
+    }
+
+    .pdf-energy-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f3f4f6;
+      font-size: 13px;
+      color: #374151;
+    }
+
+    .pdf-circles { font-size: 14px; }
+    .pdf-day { color: #6b7280; width: 40px; }
+
+    .pdf-summary-box {
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .pdf-summary-item {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .pdf-summary-item strong {
+      display: block;
+      font-size: 14px;
+      color: #1a1a2e;
+    }
+
+    /* ── PRICING ── */
+    #pricing {
+      padding: 120px 0;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .pricing-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      position: relative;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .pricing-card:hover { transform: translateY(-4px); }
+
+    .pricing-card.featured {
+      background: rgba(124,58,237,0.1);
+      border-color: rgba(124,58,237,0.4);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--purple);
+      color: #fff;
+      padding: 4px 16px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .pricing-name {
+      font-size: 14px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+
+    .pricing-price {
+      font-family: 'DM Serif Display', serif;
+      font-size: 48px;
+      letter-spacing: -2px;
+      margin-bottom: 4px;
+    }
+
+    .pricing-price sup {
+      font-size: 20px;
+      vertical-align: super;
+      letter-spacing: 0;
+    }
+
+    .pricing-period {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .pricing-features li .check {
+      color: var(--green);
+      font-size: 14px;
+    }
+
+    .pricing-features li .x {
+      color: rgba(255,255,255,0.2);
+      font-size: 14px;
+    }
+
+    .pricing-cta {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .pricing-cta.primary {
+      background: var(--purple);
+      color: #fff;
+    }
+
+    .pricing-cta.primary:hover { background: var(--purple-l); }
+
+    .pricing-cta.ghost {
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .pricing-cta.ghost:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+
+    /* ── CTA SECTION ── */
+    #cta {
+      padding: 120px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #cta::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    #cta h2 {
+      max-width: 700px;
+      margin: 0 auto 24px;
+    }
+
+    #cta p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 40px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-copy {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .container { padding: 0 24px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { display: none; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .step-connector { display: none; }
+      .tab-content.active { grid-template-columns: 1fr; }
+      .audience-visual { display: none; }
+      .pdf-inner { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+      .tabs { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">calmi <span>experiments</span></a>
+  <a href="https://calmi-experiments.lelekstudio.com/register" class="cta-small">Start free →</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-left fade-up">
+        <div class="hero-label">
+          <span class="dot"></span>
+          Built for neurodivergent minds
+        </div>
+        <h1>Small experiments.<br><em>Real</em> self-knowledge.</h1>
+        <p class="hero-sub">Stop guessing what works for you. Run tiny experiments, track your energy, and discover patterns — without pressure, without judgment.</p>
+        <div class="hero-actions">
+          <a href="https://calmi-experiments.lelekstudio.com/register" class="btn-primary">
+            Start your first experiment
+            <span>→</span>
+          </a>
+          <a href="#how" class="btn-ghost">See how it works ↓</a>
+        </div>
+      </div>
+      <div class="hero-visual fade-up" style="animation-delay: 0.2s">
+        <div class="phone-mockup">
+          <div class="mock-header">
+            <span class="mock-title">Morning walks</span>
+            <span class="mock-badge">● Active</span>
+          </div>
+          <div class="mock-exp">
+            <div class="mock-exp-label">Day 4 of 7</div>
+            <div class="mock-exp-title">What happens when I walk outside before work?</div>
+            <div class="mock-exp-meta">Personal Development · Started Mar 18</div>
+          </div>
+          <div class="mock-checkins">
+            <div class="mock-checkin">
+              <div class="energy-dot energy-high"></div>
+              <span class="checkin-text">Felt focused and clear all morning</span>
+              <span class="checkin-day">Day 1</span>
+            </div>
+            <div class="mock-checkin">
+              <div class="energy-dot energy-medium"></div>
+              <span class="checkin-text">Distracted but still better than usual</span>
+              <span class="checkin-day">Day 2</span>
+            </div>
+            <div class="mock-checkin">
+              <div class="energy-dot energy-high"></div>
+              <span class="checkin-text">Best morning in weeks. Noticed a pattern.</span>
+              <span class="checkin-day">Day 3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust-bar">
+  <div class="container">
+    <div class="trust-inner">
+      <div class="trust-item"><span class="trust-icon">🔒</span> GDPR compliant</div>
+      <div class="trust-item"><span class="trust-icon">🧠</span> Designed for ADHD & neurodiversity</div>
+      <div class="trust-item"><span class="trust-icon">💜</span> No judgment, no streaks</div>
+      <div class="trust-item"><span class="trust-icon">📄</span> PDF reports for coaches</div>
+      <div class="trust-item"><span class="trust-icon">✦</span> Free to start</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">The problem</div>
+      <h2>You've tried everything.<br><em>Nothing sticks.</em></h2>
+      <p class="section-sub">Not because you're broken — but because you've been using other people's systems. Your brain works differently. You need data about yourself.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card fade-up">
+        <div class="problem-icon">🌪️</div>
+        <h3>Too many ideas, no clarity</h3>
+        <p>You start things with energy, lose momentum after 3 days, and never find out if the idea was actually good.</p>
+      </div>
+      <div class="problem-card fade-up" style="transition-delay: 0.1s">
+        <div class="problem-icon">📉</div>
+        <h3>Goals feel like pressure</h3>
+        <p>Traditional habit trackers punish you for missing a day. For a neurodivergent brain, that's a recipe for shame.</p>
+      </div>
+      <div class="problem-card fade-up" style="transition-delay: 0.2s">
+        <div class="problem-icon">🔁</div>
+        <h3>No data, just feelings</h3>
+        <p>You know something isn't working, but you can't explain why. You need patterns, not willpower.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">How it works</div>
+      <h2>An experiment is<br><em>not</em> a goal.</h2>
+      <p class="section-sub">It's a question. What happens if I try X for a few days? No pressure. Just curiosity. And real data.</p>
+    </div>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-number">1</div>
+        <h3>Ask a question</h3>
+        <p>Turn any idea into an experiment. "What happens if I wake up 30 min earlier?" Save ideas to Parking — start when you're ready.</p>
+        <div class="step-connector">→</div>
+      </div>
+      <div class="step fade-up" style="transition-delay: 0.15s">
+        <div class="step-number">2</div>
+        <h3>Check in daily</h3>
+        <p>Rate your energy (Low / Medium / High) and add a quick note. No streaks. No judgment if you miss a day. Every day counts.</p>
+        <div class="step-connector">→</div>
+      </div>
+      <div class="step fade-up" style="transition-delay: 0.3s">
+        <div class="step-number">3</div>
+        <h3>Discover what works</h3>
+        <p>After the experiment, reflect on what you found. See patterns in your energy. Build actual knowledge about yourself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section id="audience">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">Who it's for</div>
+      <h2>Designed for three<br><em>different</em> perspectives.</h2>
+    </div>
+    <div class="tabs fade-up">
+      <button class="tab active" onclick="switchTab('adhd')">ADHD & Neurodiversity</button>
+      <button class="tab" onclick="switchTab('coach')">Coaches</button>
+      <button class="tab" onclick="switchTab('therapist')">Therapists</button>
+    </div>
+
+    <!-- ADHD TAB -->
+    <div class="tab-content active" id="tab-adhd">
+      <div class="audience-text">
+        <h3>Your brain works differently. Your tools should too.</h3>
+        <p>Calmi Experiments is built around how ADHD and neurodivergent minds actually function — with curiosity, energy spikes, and variable days. No streaks that punish you. No goals that feel impossible. Just small, honest experiments.</p>
+        <ul class="feature-list">
+          <li>Run one experiment at a time — no overwhelm</li>
+          <li>Park ideas for later — never lose a good thought</li>
+          <li>Energy tracking instead of habit streaks</li>
+          <li>Short daily check-ins (under 2 minutes)</li>
+          <li>Reflect only when you're ready — no pressure</li>
+          <li>See patterns across weeks, not just days</li>
+        </ul>
+      </div>
+      <div class="audience-visual">
+        <div class="quote-card">
+          <p>"I've tried every habit app. They all made me feel bad about myself. Calmi Experiments is the first thing that actually gives me data without judgment."</p>
+          <div class="quote-author">— Adult with ADHD, beta user</div>
+        </div>
+        <div class="mini-stat">
+          <span class="mini-stat-icon">⚡</span>
+          <div class="mini-stat-text">
+            <strong>Variable energy support</strong>
+            Low / Medium / High — reflects real days, not ideal days
+          </div>
+        </div>
+        <div class="mini-stat">
+          <span class="mini-stat-icon">🅿️</span>
+          <div class="mini-stat-text">
+            <strong>Idea Parking</strong>
+            Save ideas without committing — start when you're ready
+          </div>
+        </div>
+        <div class="mini-stat">
+          <span class="mini-stat-icon">🔬</span>
+          <div class="mini-stat-text">
+            <strong>Experiment mindset</strong>
+            Questions, not goals — removes shame from the equation
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COACH TAB -->
+    <div class="tab-content" id="tab-coach">
+      <div class="audience-text">
+        <h3>Give clients a tool that works between sessions.</h3>
+        <p>Calmi Experiments fills the gap between coaching sessions. Clients run structured experiments, track their daily experience, and arrive at your next session with real data — not just vague feelings.</p>
+        <ul class="feature-list">
+          <li>Clients self-direct — you guide the experiment design verbally</li>
+          <li>PDF session reports with daily observations and energy patterns</li>
+          <li>Reflection section structured for coaching conversations</li>
+          <li>Built-in accountability without external pressure</li>
+          <li>Works alongside any coaching methodology</li>
+          <li>Promotion codes for your clients (bulk access)</li>
+        </ul>
+      </div>
+      <div class="audience-visual">
+        <div class="quote-card">
+          <p>"My clients come to sessions with actual data now. Instead of 'I tried but it didn't work', they can say 'I noticed my energy was low on days 2 and 4 — here's why.'"</p>
+          <div class="quote-author">— Life coach, beta user</div>
+        </div>
+        <div class="mini-stat">
+          <span class="mini-stat-icon">📄</span>
+          <div class="mini-stat-text">
+            <strong>Session-ready PDF reports</strong>
+            Energy pattern, daily notes, reflection, summary for coach
+          </div>
+        </div>
+        <div class="mini-stat">
+          <span class="mini-stat-icon">🎯</span>
+          <div class="mini-stat-text">
+            <strong>Between-session continuity</strong>
+            Clients stay engaged and reflective without you being present
+          </div>
+        </div>
+        <div class="mini-stat">
+          <span class="mini-stat-icon">🔑</span>
+          <div class="mini-stat-text">
+            <strong>Coach access codes</strong>
+            Share premium access with your clients easily
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THERAPIST TAB -->
+    <div class="tab-content" id="tab-therapist">
+      <div class="audience-text">
+        <h3>Behavioral homework that clients actually complete.</h3>
+        <p>Calmi Experiments supports behavioral activation and self-monitoring between therapy sessions. Clients track mood-adjacent energy, daily observations, and reflections — giving you structured data to work with in session.</p>
+        <ul class="feature-list">
+          <li>Supports behavioral activation and self-monitoring</li>
+          <li>Energy tracking as a mood-adjacent daily measure</li>
+          <li>Structured reflection supports cognitive processing</li>
+          <li>PDF reports provide session continuity</li>
+          <li>Low-friction daily check-ins improve compliance</li>
+          <li>Non-judgmental framing reduces avoidance</li>
+        </ul>
+      </div>
+      <div class="audience-visual">
+        <div class="quote-card">
+          <p>"The experiment framing removes a lot of the 'I failed' narrative. Clients engage with it differently than traditional homework — there's more curiosity, less shame."</p>
+          <div class="quote-author">— Psychotherapist, beta user</div>
+        </div>
+        <div class="mini-stat">
+          <span class="mini-stat-icon">📊</span>
+          <div class="mini-stat-text">
+            <strong>Structured self-monitoring</strong>
+            Daily energy + observations across experiment duration
+          </div>
+        </div>
+        <div class="mini-stat">
+          <span class="mini-stat-icon">🧩</span>
+          <div class="mini-stat-text">
+            <strong>Works with CBT & ACT frameworks</strong>
+            Experiment mindset aligns with behavioral approaches
+          </div>
+        </div>
+        <div class="mini-stat">
+          <span class="mini-stat-icon">🛡️</span>
+          <div class="mini-stat-text">
+            <strong>GDPR compliant</strong>
+            Client data stays private and secure
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PDF SECTION -->
+<section id="pdf-section">
+  <div class="container">
+    <div class="pdf-inner">
+      <div class="fade-up">
+        <div class="section-label">Session reports</div>
+        <h2>A PDF your<br><em>coach will love.</em></h2>
+        <p class="section-sub" style="margin-bottom: 32px;">After each experiment, generate a structured report. Energy patterns, daily observations, and a reflection — ready to bring to your next session.</p>
+        <ul class="feature-list">
+          <li>Energy pattern visualization (day-by-day)</li>
+          <li>Full daily observations with notes</li>
+          <li>Personal reflection section</li>
+          <li>Session summary stats for coach</li>
+          <li>Generated in seconds, download instantly</li>
+        </ul>
+      </div>
+      <div class="fade-up" style="transition-delay: 0.2s">
+        <div class="pdf-preview">
+          <div class="pdf-header">
+            <div class="pdf-brand">CALMI EXPERIMENTS — Experiment Report</div>
+            <div class="pdf-title">Morning walks before work</div>
+            <div class="pdf-meta">Personal Development · Completed · 7 days</div>
+          </div>
+          <div class="pdf-section-title">Energy Pattern</div>
+          <div class="pdf-energy-row"><span class="pdf-day">Day 1</span><span class="pdf-circles">●●●</span><span style="color:#10b981;font-size:12px;font-weight:600;">HIGH</span></div>
+          <div class="pdf-energy-row"><span class="pdf-day">Day 2</span><span class="pdf-circles">●●○</span><span style="color:#f59e0b;font-size:12px;font-weight:600;">MEDIUM</span></div>
+          <div class="pdf-energy-row"><span class="pdf-day">Day 3</span><span class="pdf-circles">●●●</span><span style="color:#10b981;font-size:12px;font-weight:600;">HIGH</span></div>
+          <div class="pdf-energy-row"><span class="pdf-day">Day 4</span><span class="pdf-circles">●○○</span><span style="color:#ef4444;font-size:12px;font-weight:600;">LOW</span></div>
+          <div class="pdf-section-title">What I Discovered</div>
+          <div style="font-size:13px;color:#374151;font-style:italic;line-height:1.5;margin-bottom:12px">"Walking in the morning significantly improves my focus. Low energy on day 4 was due to poor sleep — not the walk itself."</div>
+          <div class="pdf-summary-box">
+            <div class="pdf-summary-item"><strong>7 days</strong>Total active</div>
+            <div class="pdf-summary-item"><strong>6 check-ins</strong>Completed</div>
+            <div class="pdf-summary-item"><strong>4 High / 1 Low</strong>Energy dist.</div>
+            <div class="pdf-summary-item"><strong>Completed ✓</strong>Outcome</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label">Pricing</div>
+      <h2>Start free.<br><em>Upgrade</em> when ready.</h2>
+      <p class="section-sub" style="margin: 0 auto">No credit card required. No pressure. Just start your first experiment.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card fade-up">
+        <div class="pricing-name">Free</div>
+        <div class="pricing-price"><sup>$</sup>0</div>
+        <div class="pricing-period">forever</div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> 1 active experiment</li>
+          <li><span class="check">✓</span> Idea Parking</li>
+          <li><span class="check">✓</span> Daily check-ins</li>
+          <li><span class="check">✓</span> Energy tracking</li>
+          <li><span class="x">✗</span> PDF reports</li>
+          <li><span class="x">✗</span> Unlimited experiments</li>
+          <li><span class="x">✗</span> History & statistics</li>
+        </ul>
+        <a href="https://calmi-experiments.lelekstudio.com/register" class="pricing-cta ghost">Get started free</a>
+      </div>
+      <div class="pricing-card featured fade-up" style="transition-delay:0.1s">
+        <div class="pricing-badge">Most popular</div>
+        <div class="pricing-name">Premium</div>
+        <div class="pricing-price"><sup>$</sup>2<span style="font-size:24px">.99</span></div>
+        <div class="pricing-period">per month · or $19.99/year</div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Unlimited experiments</li>
+          <li><span class="check">✓</span> PDF session reports</li>
+          <li><span class="check">✓</span> Full history</li>
+          <li><span class="check">✓</span> Statistics & patterns</li>
+          <li><span class="check">✓</span> Custom categories</li>
+          <li><span class="check">✓</span> Photo notes</li>
+          <li><span class="check">✓</span> Priority support</li>
+        </ul>
+        <a href="https://calmi-experiments.lelekstudio.com/register" class="pricing-cta primary">Start premium</a>
+      </div>
+      <div class="pricing-card fade-up" style="transition-delay:0.2s">
+        <div class="pricing-name">Lifetime</div>
+        <div class="pricing-price"><sup>$</sup>39<span style="font-size:24px">.99</span></div>
+        <div class="pricing-period">one-time payment</div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Everything in Premium</li>
+          <li><span class="check">✓</span> Lifetime access</li>
+          <li><span class="check">✓</span> All future features</li>
+          <li><span class="check">✓</span> Early adopter price</li>
+          <li><span class="check">✓</span> Coach promo codes</li>
+          <li><span class="check">✓</span> Support development</li>
+          <li><span class="check">✓</span> No recurring fees ever</li>
+        </ul>
+        <a href="https://calmi-experiments.lelekstudio.com/register" class="pricing-cta ghost">Get lifetime access</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LICENSES -->
+<section id="licenses" style="padding: 120px 0; background: var(--surface);">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
+      <div class="fade-up">
+        <div class="section-label">For professionals</div>
+        <h2>Need licenses<br>for your <em>clients?</em></h2>
+        <p class="section-sub" style="margin-bottom: 32px;">If you're a coach or therapist looking to give your clients access to Calmi Experiments, get in touch. We'll set you up with promotion codes or a bulk access plan that fits your practice.</p>
+        <ul class="feature-list" style="margin-bottom: 32px;">
+          <li>Custom promotion codes for your clients</li>
+          <li>Bulk access at reduced rates</li>
+          <li>PDF reports included for all client accounts</li>
+          <li>No technical setup required on your end</li>
+          <li>Personal onboarding support</li>
+        </ul>
+        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px;">
+          <div style="font-size: 13px; color: var(--muted); margin-bottom: 8px;">We typically respond within</div>
+          <div style="font-size: 22px; font-family: 'DM Serif Display', serif; color: var(--text);">24 hours ⚡</div>
+        </div>
+      </div>
+
+      <div class="fade-up" style="transition-delay: 0.2s;">
+        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px; padding: 36px;">
+          <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 8px;">Get in touch</h3>
+          <p style="font-size: 14px; color: var(--muted); margin-bottom: 28px;">Tell us about your practice and how many clients you'd like to onboard.</p>
+
+          <form id="licenseForm" onsubmit="submitForm(event)">
+            <div style="margin-bottom: 16px;">
+              <label style="display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px;">Your name</label>
+              <input type="text" id="fname" required placeholder="Jane Smith"
+                style="width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; color: var(--text); font-size: 15px; outline: none; font-family: 'DM Sans', sans-serif; transition: border-color 0.2s;"
+                onfocus="this.style.borderColor='rgba(124,58,237,0.5)'"
+                onblur="this.style.borderColor='rgba(255,255,255,0.07)'" />
+            </div>
+
+            <div style="margin-bottom: 16px;">
+              <label style="display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px;">Your email</label>
+              <input type="email" id="femail" required placeholder="jane@yourpractice.com"
+                style="width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; color: var(--text); font-size: 15px; outline: none; font-family: 'DM Sans', sans-serif; transition: border-color 0.2s;"
+                onfocus="this.style.borderColor='rgba(124,58,237,0.5)'"
+                onblur="this.style.borderColor='rgba(255,255,255,0.07)'" />
+            </div>
+
+            <div style="margin-bottom: 16px;">
+              <label style="display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px;">I am a...</label>
+              <select id="frole" required
+                style="width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; color: var(--text); font-size: 15px; outline: none; font-family: 'DM Sans', sans-serif; cursor: pointer;">
+                <option value="" disabled selected>Select your role</option>
+                <option value="Coach">Coach</option>
+                <option value="Therapist">Therapist</option>
+                <option value="Other professional">Other professional</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom: 16px;">
+              <label style="display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px;">Number of clients</label>
+              <select id="fclients" required
+                style="width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; color: var(--text); font-size: 15px; outline: none; font-family: 'DM Sans', sans-serif; cursor: pointer;">
+                <option value="" disabled selected>How many clients?</option>
+                <option value="1-5">1–5 clients</option>
+                <option value="6-15">6–15 clients</option>
+                <option value="16-30">16–30 clients</option>
+                <option value="30+">30+ clients</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom: 24px;">
+              <label style="display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px;">Message (optional)</label>
+              <textarea id="fmessage" rows="3" placeholder="Tell us about your practice or any specific needs..."
+                style="width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; color: var(--text); font-size: 15px; outline: none; font-family: 'DM Sans', sans-serif; resize: vertical; transition: border-color 0.2s;"
+                onfocus="this.style.borderColor='rgba(124,58,237,0.5)'"
+                onblur="this.style.borderColor='rgba(255,255,255,0.07)'"></textarea>
+            </div>
+
+            <button type="submit" id="fsubmit"
+              style="width: 100%; background: var(--purple); color: #fff; border: none; border-radius: 12px; padding: 16px; font-size: 16px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s;">
+              Send message →
+            </button>
+
+            <div id="fSuccess" style="display:none; margin-top: 16px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 14px; text-align: center; color: #10b981; font-size: 14px;">
+              ✓ Message sent! We'll get back to you within 24 hours.
+            </div>
+            <div id="fError" style="display:none; margin-top: 16px; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 14px; text-align: center; color: #ef4444; font-size: 14px;">
+              Something went wrong. Please email us directly: <a href="mailto:lelekstudio@lelekstudio.com" style="color:#ef4444">lelekstudio@lelekstudio.com</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label" style="text-align:center">Ready?</div>
+      <h2 style="text-align:center">Start with<br><em>one question.</em></h2>
+      <p>What happens if you try something small for the next 7 days? Add it now — even if it's not perfect yet.</p>
+      <div style="display:flex;justify-content:center">
+        <a href="https://calmi-experiments.lelekstudio.com/register" class="btn-primary">
+          Start your first experiment — it's free
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#" class="logo">calmi <span>experiments</span></a>
+      <div class="footer-links">
+        <a href="https://calmi-experiments.lelekstudio.com/privacy-policy">Privacy Policy</a>
+        <a href="https://calmi-experiments.lelekstudio.com/terms-of-service">Terms of Service</a>
+        <a href="https://calmi-experiments.lelekstudio.com/register">Sign Up</a>
+      </div>
+      <div class="footer-copy">© 2026 Calmi Experiments</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Tab switching
+  function switchTab(id) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelector(`[onclick="switchTab('${id}')"]`).classList.add('active');
+    document.getElementById(`tab-${id}`).classList.add('active');
+  }
+
+  // License form submission
+  function submitForm(e) {
+    e.preventDefault();
+    const name    = document.getElementById('fname').value.trim();
+    const email   = document.getElementById('femail').value.trim();
+    const role    = document.getElementById('frole').value;
+    const clients = document.getElementById('fclients').value;
+    const message = document.getElementById('fmessage').value.trim();
+
+    const subject = encodeURIComponent(`[Calmi Experiments] License inquiry — ${role}`);
+    const body = encodeURIComponent(
+`Hello,
+
+I'm interested in licenses for my clients.
+
+Name: ${name}
+Email: ${email}
+Role: ${role}
+Number of clients: ${clients}
+${message ? `\nMessage:\n${message}` : ''}
+
+---
+Sent from Calmi Experiments landing page`
+    );
+
+    const mailtoLink = `mailto:lelekstudio@lelekstudio.com?subject=${subject}&body=${body}`;
+
+    try {
+      window.location.href = mailtoLink;
+      document.getElementById('fSuccess').style.display = 'block';
+      document.getElementById('fError').style.display = 'none';
+      document.getElementById('licenseForm').reset();
+    } catch(err) {
+      document.getElementById('fError').style.display = 'block';
+    }
+  }
+
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
