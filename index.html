@@ -5,6 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Calmi Experiments — Small experiments. Real self-knowledge.</title>
   <meta name="description" content="Calmi Experiments helps neurodivergent individuals, coaches, and therapists run small life experiments and discover what actually works — without pressure, without judgment." />
+  <!-- ── CANONICAL ── -->
+  <link rel="canonical" href="https://calmi.lelekstudio.com" />
+
+  <!-- ── OPEN GRAPH (Facebook, LinkedIn) ── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://calmi.lelekstudio.com" />
+  <meta property="og:title" content="Calmi Experiments — Small experiments. Real self-knowledge." />
+  <meta property="og:description" content="Run small life experiments. Track your energy. Discover what actually works for you — without pressure, without judgment. Built for ADHD & neurodivergent minds." />
+  <meta property="og:image" content="https://calmi.lelekstudio.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Calmi Experiments" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- ── TWITTER CARD ── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Calmi Experiments — Small experiments. Real self-knowledge." />
+  <meta name="twitter:description" content="Run small life experiments. Track your energy. Discover what actually works for you — without pressure, without judgment." />
+  <meta name="twitter:image" content="https://calmi.lelekstudio.com/og-image.png" />
+
+  <!-- ── ADDITIONAL SEO ── -->
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Calmi Experiments" />
+  <meta name="keywords" content="ADHD app, neurodivergent tools, self experimentation, habit tracking, coaching tool, therapist app, behavioral activation, self knowledge, life experiments, energy tracking" />
+  <meta name="theme-color" content="#7c3aed" />
+
+  <!-- ── STRUCTURED DATA (JSON-LD) ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Calmi Experiments",
+    "url": "https://calmi.lelekstudio.com",
+    "description": "Run small life experiments. Track your energy. Discover what actually works for you — without pressure, without judgment. Built for ADHD & neurodivergent minds, coaches and therapists.",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web, iOS, Android",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Premium Monthly",
+        "price": "2.99",
+        "priceCurrency": "USD",
+        "billingIncrement": "P1M"
+      },
+      {
+        "@type": "Offer",
+        "name": "Lifetime",
+        "price": "39.99",
+        "priceCurrency": "USD"
+      }
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "Calmi Experiments",
+      "url": "https://calmi.lelekstudio.com"
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -211,108 +276,235 @@
       position: relative;
     }
 
+    /* ── APP MOCKUP — faithful to real UI ── */
     .phone-mockup {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 24px;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
-      position: relative;
+      background: #1a1a2e;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
       overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+      position: relative;
     }
 
-    .phone-mockup::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, transparent 60%);
-    }
-
-    .mock-header {
+    /* Top bar — like app header */
+    .mock-topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 20px;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
-    .mock-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 20px;
+    .mock-back {
+      width: 32px; height: 32px;
+      background: #16213e;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: #fff;
     }
 
-    .mock-badge {
-      background: rgba(16,185,129,0.15);
-      color: var(--green);
-      padding: 4px 10px;
-      border-radius: 100px;
-      font-size: 12px;
+    .mock-topbar-title {
+      font-size: 15px;
       font-weight: 600;
+      color: #fff;
     }
 
-    .mock-exp {
-      background: rgba(124,58,237,0.12);
-      border: 1px solid rgba(124,58,237,0.2);
-      border-radius: 16px;
-      padding: 16px;
-      margin-bottom: 16px;
+    .mock-pdf-icon {
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      color: #7c3aed; font-size: 16px;
     }
 
-    .mock-exp-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--purple-l);
-      margin-bottom: 6px;
+    /* Content area */
+    .mock-content {
+      padding: 18px;
     }
 
+    /* Experiment title row */
     .mock-exp-title {
-      font-weight: 600;
-      font-size: 16px;
-      margin-bottom: 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      line-height: 1.2;
     }
 
-    .mock-exp-meta {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .mock-checkins {
+    .mock-meta-row {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
     }
 
-    .mock-checkin {
+    .mock-badge-active {
+      background: rgba(16,185,129,0.15);
+      color: #10b981;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .mock-badge-cat {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .mock-exp-desc {
+      font-size: 13px;
+      color: #9ca3af;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    /* Day progress card */
+    .mock-day-card {
+      background: #16213e;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
       gap: 12px;
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 12px 14px;
     }
 
-    .energy-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      flex-shrink: 0;
+    .mock-day-icon { font-size: 18px; }
+
+    .mock-day-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
     }
 
-    .energy-high { background: var(--green); }
-    .energy-medium { background: var(--amber); }
-    .energy-low { background: var(--red); }
-
-    .checkin-text {
-      font-size: 13px;
-      color: var(--muted);
-      flex: 1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .checkin-day {
+    .mock-day-sub {
       font-size: 12px;
-      color: rgba(255,255,255,0.3);
+      color: #6b7280;
+    }
+
+    /* Capacity Notes section */
+    .mock-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .mock-section-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .mock-section-count {
+      background: #16213e;
+      color: #6b7280;
+      width: 22px; height: 22px;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+    }
+
+    /* Individual note cards — exact app style */
+    .mock-note {
+      background: #16213e;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 8px;
+    }
+
+    .mock-note-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .mock-note-day {
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .mock-note-date {
+      font-size: 11px;
+      color: #6b7280;
+    }
+
+    .mock-note-text {
+      font-size: 13px;
+      color: #9ca3af;
+      line-height: 1.5;
+    }
+
+    .mock-badge-low {
+      background: rgba(239,68,68,0.15);
+      color: #ef4444;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    .mock-badge-medium {
+      background: rgba(245,158,11,0.15);
+      color: #f59e0b;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    .mock-badge-high {
+      background: rgba(16,185,129,0.15);
+      color: #10b981;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    /* Bottom action buttons — exact app style */
+    .mock-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .mock-btn-add {
+      background: #7c3aed;
+      color: #fff;
+      padding: 14px 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+
+    .mock-btn-pause {
+      background: #1a1a2e;
+      color: #f59e0b;
+      padding: 14px 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      border-left: 1px solid rgba(255,255,255,0.06);
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .mock-btn-end {
+      background: #1a1a2e;
+      color: #10b981;
+      padding: 14px 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
     }
 
     /* ── TRUST BAR ── */
@@ -933,32 +1125,86 @@
       </div>
       <div class="hero-visual fade-up" style="animation-delay: 0.2s">
         <div class="phone-mockup">
-          <div class="mock-header">
-            <span class="mock-title">Morning walks</span>
-            <span class="mock-badge">● Active</span>
+
+          <!-- Top bar — like real app -->
+          <div class="mock-topbar">
+            <div class="mock-back">←</div>
+            <div class="mock-topbar-title">Experiment</div>
+            <div class="mock-pdf-icon">⬜</div>
           </div>
-          <div class="mock-exp">
-            <div class="mock-exp-label">Day 4 of 7</div>
-            <div class="mock-exp-title">What happens when I walk outside before work?</div>
-            <div class="mock-exp-meta">Personal Development · Started Mar 18</div>
+
+          <!-- Content -->
+          <div class="mock-content">
+
+            <!-- Title + meta -->
+            <div class="mock-exp-title">Morning walks</div>
+            <div class="mock-meta-row">
+              <span class="mock-badge-active">Active</span>
+              <span class="mock-badge-cat">Personal Development</span>
+              <span class="mock-badge-cat">Mar 18, 2026</span>
+            </div>
+            <div class="mock-exp-desc">What happens when I walk outside before work every day?</div>
+
+            <!-- Day progress -->
+            <div class="mock-day-card">
+              <span class="mock-day-icon">☀️</span>
+              <div>
+                <div class="mock-day-label">Day 4 of your experiment</div>
+                <div class="mock-day-sub">7 days planned</div>
+              </div>
+            </div>
+
+            <!-- Capacity Notes -->
+            <div class="mock-section-header">
+              <span class="mock-section-title">Capacity Notes</span>
+              <span class="mock-section-count">3</span>
+            </div>
+
+            <!-- Note 1 -->
+            <div class="mock-note">
+              <div class="mock-note-header">
+                <div>
+                  <div class="mock-note-day">Day 1</div>
+                  <div class="mock-note-date">Mar 18 at 8:42 AM</div>
+                </div>
+                <span class="mock-badge-high">● High</span>
+              </div>
+              <div class="mock-note-text">Felt focused and clear all morning. Best start in weeks.</div>
+            </div>
+
+            <!-- Note 2 -->
+            <div class="mock-note">
+              <div class="mock-note-header">
+                <div>
+                  <div class="mock-note-day">Day 2</div>
+                  <div class="mock-note-date">Mar 19 at 8:55 AM</div>
+                </div>
+                <span class="mock-badge-medium">● Medium</span>
+              </div>
+              <div class="mock-note-text">Distracted but still better than usual. Noticed a pattern.</div>
+            </div>
+
+            <!-- Note 3 -->
+            <div class="mock-note">
+              <div class="mock-note-header">
+                <div>
+                  <div class="mock-note-day">Day 3</div>
+                  <div class="mock-note-date">Mar 20 at 9:11 PM</div>
+                </div>
+                <span class="mock-badge-low">● Low</span>
+              </div>
+              <div class="mock-note-text">Skipped the walk. Energy dropped. Correlation confirmed.</div>
+            </div>
+
           </div>
-          <div class="mock-checkins">
-            <div class="mock-checkin">
-              <div class="energy-dot energy-high"></div>
-              <span class="checkin-text">Felt focused and clear all morning</span>
-              <span class="checkin-day">Day 1</span>
-            </div>
-            <div class="mock-checkin">
-              <div class="energy-dot energy-medium"></div>
-              <span class="checkin-text">Distracted but still better than usual</span>
-              <span class="checkin-day">Day 2</span>
-            </div>
-            <div class="mock-checkin">
-              <div class="energy-dot energy-high"></div>
-              <span class="checkin-text">Best morning in weeks. Noticed a pattern.</span>
-              <span class="checkin-day">Day 3</span>
-            </div>
+
+          <!-- Bottom action buttons — exact app layout -->
+          <div class="mock-actions">
+            <div class="mock-btn-add">＋ Add Note</div>
+            <div class="mock-btn-pause">⏸ Pause</div>
+            <div class="mock-btn-end">✓ End</div>
           </div>
+
         </div>
       </div>
     </div>
@@ -1228,56 +1474,111 @@
     <div class="fade-up" style="text-align:center">
       <div class="section-label">Pricing</div>
       <h2>Start free.<br><em>Upgrade</em> when ready.</h2>
-      <p class="section-sub" style="margin: 0 auto">No credit card required. No pressure. Just start your first experiment.</p>
+      <p class="section-sub" style="margin: 0 auto">No credit card required. All premium plans include the same features — you choose how long.</p>
     </div>
-    <div class="pricing-grid">
-      <div class="pricing-card fade-up">
-        <div class="pricing-name">Free</div>
-        <div class="pricing-price"><sup>$</sup>0</div>
-        <div class="pricing-period">forever</div>
-        <ul class="pricing-features">
-          <li><span class="check">✓</span> 1 active experiment</li>
-          <li><span class="check">✓</span> Idea Parking</li>
-          <li><span class="check">✓</span> Daily check-ins</li>
-          <li><span class="check">✓</span> Energy tracking</li>
-          <li><span class="x">✗</span> PDF reports</li>
-          <li><span class="x">✗</span> Unlimited experiments</li>
-          <li><span class="x">✗</span> History & statistics</li>
-        </ul>
-        <a href="https://calmi-experiments.lelekstudio.com/register" class="pricing-cta ghost">Get started free</a>
+
+    <!-- Premium features list — from real app -->
+    <div class="fade-up" style="max-width:600px; margin: 48px auto 60px; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; overflow: hidden;">
+      <div style="padding: 20px 24px; border-bottom: 1px solid var(--border);">
+        <div style="font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--purple-l); font-weight: 600; margin-bottom: 4px;">Premium features</div>
+        <div style="font-size: 15px; color: var(--muted);">Everything unlocked in all paid plans</div>
       </div>
-      <div class="pricing-card featured fade-up" style="transition-delay:0.1s">
-        <div class="pricing-badge">Most popular</div>
-        <div class="pricing-name">Premium</div>
+      <div style="display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid var(--border);">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="font-size: 18px;">🎨</span>
+            <span style="font-size: 15px; color: var(--text);">Custom categories</span>
+          </div>
+          <span style="color: #10b981; font-size: 18px;">✓</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid var(--border);">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="font-size: 18px;">✏️</span>
+            <span style="font-size: 15px; color: var(--text);">Customize category colors</span>
+          </div>
+          <span style="color: #10b981; font-size: 18px;">✓</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid var(--border);">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="font-size: 18px;">📊</span>
+            <span style="font-size: 15px; color: var(--text);">Statistics & analytics</span>
+          </div>
+          <span style="color: #10b981; font-size: 18px;">✓</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid var(--border);">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="font-size: 18px;">🖼️</span>
+            <span style="font-size: 15px; color: var(--text);">Image attachments in notes</span>
+          </div>
+          <span style="color: #10b981; font-size: 18px;">✓</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 24px;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="font-size: 18px;">📄</span>
+            <span style="font-size: 15px; color: var(--text);">Export to PDF</span>
+          </div>
+          <span style="color: #10b981; font-size: 18px;">✓</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- MONTHLY -->
+      <div class="pricing-card fade-up">
+        <div class="pricing-name">Monthly</div>
         <div class="pricing-price"><sup>$</sup>2<span style="font-size:24px">.99</span></div>
-        <div class="pricing-period">per month · or $19.99/year</div>
-        <ul class="pricing-features">
+        <div class="pricing-period">per month · cancel anytime</div>
+        <ul class="pricing-features" style="margin-bottom:28px">
+          <li><span class="check">✓</span> All premium features</li>
           <li><span class="check">✓</span> Unlimited experiments</li>
+          <li><span class="check">✓</span> Full history & statistics</li>
           <li><span class="check">✓</span> PDF session reports</li>
-          <li><span class="check">✓</span> Full history</li>
-          <li><span class="check">✓</span> Statistics & patterns</li>
-          <li><span class="check">✓</span> Custom categories</li>
-          <li><span class="check">✓</span> Photo notes</li>
+          <li><span class="check">✓</span> Cancel anytime</li>
+        </ul>
+        <a href="https://calmi-experiments.lelekstudio.com/register" class="pricing-cta ghost">Start monthly</a>
+      </div>
+
+      <!-- YEARLY — POPULAR (default selected in app) -->
+      <div class="pricing-card featured fade-up" style="transition-delay:0.1s">
+        <div class="pricing-badge">POPULAR</div>
+        <div class="pricing-name">Yearly</div>
+        <div class="pricing-price"><sup>$</sup>19<span style="font-size:24px">.99</span></div>
+        <div class="pricing-period">per year · <strong style="color:var(--green)">save 44%</strong></div>
+        <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:10px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:#10b981;">
+          Save 44% — Best value!
+        </div>
+        <ul class="pricing-features" style="margin-bottom:28px">
+          <li><span class="check">✓</span> All premium features</li>
+          <li><span class="check">✓</span> Unlimited experiments</li>
+          <li><span class="check">✓</span> Full history & statistics</li>
+          <li><span class="check">✓</span> PDF session reports</li>
           <li><span class="check">✓</span> Priority support</li>
         </ul>
-        <a href="https://calmi-experiments.lelekstudio.com/register" class="pricing-cta primary">Start premium</a>
+        <a href="https://calmi-experiments.lelekstudio.com/register" class="pricing-cta primary">Start yearly plan</a>
       </div>
+
+      <!-- LIFETIME -->
       <div class="pricing-card fade-up" style="transition-delay:0.2s">
         <div class="pricing-name">Lifetime</div>
         <div class="pricing-price"><sup>$</sup>39<span style="font-size:24px">.99</span></div>
-        <div class="pricing-period">one-time payment</div>
-        <ul class="pricing-features">
-          <li><span class="check">✓</span> Everything in Premium</li>
-          <li><span class="check">✓</span> Lifetime access</li>
-          <li><span class="check">✓</span> All future features</li>
-          <li><span class="check">✓</span> Early adopter price</li>
-          <li><span class="check">✓</span> Coach promo codes</li>
-          <li><span class="check">✓</span> Support development</li>
+        <div class="pricing-period">one-time · pay once, own forever</div>
+        <ul class="pricing-features" style="margin-bottom:28px">
+          <li><span class="check">✓</span> All premium features</li>
+          <li><span class="check">✓</span> Unlimited experiments</li>
+          <li><span class="check">✓</span> All future features included</li>
           <li><span class="check">✓</span> No recurring fees ever</li>
+          <li><span class="check">✓</span> Early adopter price</li>
         </ul>
         <a href="https://calmi-experiments.lelekstudio.com/register" class="pricing-cta ghost">Get lifetime access</a>
       </div>
+
     </div>
+
+    <p class="fade-up" style="text-align:center; margin-top:24px; font-size:13px; color:var(--muted);">
+      All plans start with a free account — no credit card required.
+    </p>
+
   </div>
 </section>
 
@@ -1364,7 +1665,7 @@
               ✓ Message sent! We'll get back to you within 24 hours.
             </div>
             <div id="fError" style="display:none; margin-top: 16px; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 14px; text-align: center; color: #ef4444; font-size: 14px;">
-              Something went wrong. Please email us directly: <a href="mailto:lelekstudio@lelekstudio.com" style="color:#ef4444">lelekstudio@lelekstudio.com</a>
+              Something went wrong. Please email us directly: <a href="/cdn-cgi/l/email-protection#82eee7eee7e9f1f6f7e6ebedc2eee7eee7e9f1f6f7e6ebedace1edef" style="color:#ef4444"><span class="__cf_email__" data-cfemail="ddb1b8b1b8b6aea9a8b9b4b29db1b8b1b8b6aea9a8b9b4b2f3beb2b0">[email&#160;protected]</span></a>
             </div>
           </form>
         </div>
@@ -1405,7 +1706,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Tab switching
   function switchTab(id) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -1444,24 +1745,4 @@ Sent from Calmi Experiments landing page`
     try {
       window.location.href = mailtoLink;
       document.getElementById('fSuccess').style.display = 'block';
-      document.getElementById('fError').style.display = 'none';
-      document.getElementById('licenseForm').reset();
-    } catch(err) {
-      document.getElementById('fError').style.display = 'block';
-    }
-  }
-
-  // Fade-up on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-</script>
-</body>
-</html>
+      document.getElementById('fError').style.display = 'none
