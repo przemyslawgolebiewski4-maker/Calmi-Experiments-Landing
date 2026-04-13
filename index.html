@@ -177,6 +177,12 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
   .tabs{flex-wrap:wrap}
   #licenses-grid{grid-template-columns:1fr !important}
 }
+.segment-chooser { margin-bottom: 28px; }
+.segment-question { font-size: 13px; color: var(--muted); margin-bottom: 10px; letter-spacing: 0.3px; }
+.segment-options { display: flex; gap: 8px; flex-wrap: wrap; }
+.seg-btn { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 7px 16px; border-radius: 100px; font-size: 13px; cursor: pointer; transition: all 0.2s; font-family: "DM Sans", sans-serif; }
+.seg-btn:hover { border-color: rgba(124,58,237,0.4); color: var(--text); }
+.seg-btn.active { background: rgba(124,58,237,0.15); border-color: rgba(124,58,237,0.4); color: var(--purple-l); }
 </style>
 </head>
 <body>
@@ -190,11 +196,19 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
   <div class="container">
     <div class="hero-inner">
       <div class="fade-up">
-        <div class="hero-label"><span class="dot"></span> Built for neurodivergent minds</div>
-        <h1>Small experiments.<br><em>Real</em> self-knowledge.</h1>
-        <p class="hero-sub">Stop guessing what works for you. Run tiny experiments, track your energy, and discover patterns without pressure, without judgment.</p>
+        <div class="segment-chooser">
+          <p class="segment-question">How do you want to use Calmi?</p>
+          <div class="segment-options">
+            <button class="seg-btn active" data-seg="personal">For myself</button>
+            <button class="seg-btn" data-seg="work">For work</button>
+            <button class="seg-btn" data-seg="therapy">With a coach / therapist</button>
+          </div>
+        </div>
+        <div id="hero-label" class="hero-label"><span class="dot"></span> Built for neurodivergent minds</div>
+        <h1 id="hero-h1">Small experiments.<br><em>Real</em> self-knowledge.</h1>
+        <p id="hero-sub" class="hero-sub">Stop guessing what works for you. Run tiny experiments, track your energy, and discover patterns without pressure, without judgment.</p>
         <div class="hero-actions">
-          <a href="https://calmi-experiments.lelekstudio.com/register" class="btn-primary">Start your first experiment</a>
+          <a href="https://calmi-experiments.lelekstudio.com/register" class="btn-primary" id="hero-cta">Start your first experiment</a>
           <a href="#how" class="btn-ghost">See how it works</a>
         </div>
       </div>
@@ -637,6 +651,48 @@ var obs=new IntersectionObserver(function(entries){
   });
 },{threshold:0.1});
 document.querySelectorAll(".fade-up").forEach(function(el){obs.observe(el);});
+</script>
+<script>
+const HERO_COPY = {
+  personal: {
+    label: '✦ Built for neurodivergent minds',
+    h1: 'Small experiments.<br><em>Real</em> self-knowledge.',
+    sub: 'Stop guessing what works for you. Run tiny experiments, track your energy, and discover patterns — without pressure, without judgment.',
+    cta: 'Start your first experiment',
+  },
+  work: {
+    label: '✦ Built for people inside broken processes',
+    h1: 'Measure what your work<br><em>actually</em> costs you.',
+    sub: 'Not hours. Capacity. Find where the friction is, track what drains you, and fix the right thing — with real data.',
+    cta: 'Measure your first process',
+  },
+  therapy: {
+    label: '✦ For coaches and therapists',
+    h1: 'Behavioral homework<br>clients <em>actually</em> complete.',
+    sub: 'Your clients run structured experiments between sessions and arrive with real data — not just feelings. Skip the recap, go straight to insight.',
+    cta: 'Try it with your next client',
+  },
+};
+
+function switchSeg(seg) {
+  const copy = HERO_COPY[seg];
+  if (!copy) return;
+  document.getElementById('hero-label').innerHTML = copy.label;
+  document.getElementById('hero-h1').innerHTML = copy.h1;
+  document.getElementById('hero-sub').textContent = copy.sub;
+  document.getElementById('hero-cta').textContent = copy.cta;
+  document.querySelectorAll('.seg-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.seg === seg);
+  });
+  sessionStorage.setItem('calmi-seg', seg);
+}
+
+document.querySelectorAll('.seg-btn').forEach(btn => {
+  btn.addEventListener('click', () => switchSeg(btn.dataset.seg));
+});
+
+const saved = sessionStorage.getItem('calmi-seg');
+switchSeg(saved && HERO_COPY[saved] ? saved : 'personal');
 </script>
 </body>
 </html>
