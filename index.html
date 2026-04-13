@@ -88,40 +88,25 @@ h1 em,h2 em{font-style:italic;color:var(--purple-l)}
 .section-label{font-size:13px;text-transform:uppercase;letter-spacing:2px;color:var(--purple-l);font-weight:600;margin-bottom:16px}
 h2{font-family:"DM Serif Display",serif;font-size:clamp(32px,4vw,52px);line-height:1.15;letter-spacing:-1px;margin-bottom:20px}
 .section-sub{font-size:18px;color:var(--muted);max-width:560px;line-height:1.7}
-#problem{padding:120px 0}
+#content-section{padding:80px 0}
 .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
 .problem-card{background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:28px;transition:border-color 0.3s,transform 0.3s}
 .problem-card:hover{border-color:rgba(124,58,237,0.3);transform:translateY(-4px)}
 .problem-icon{font-size:28px;margin-bottom:16px}
 .problem-card h3{font-size:18px;font-weight:600;margin-bottom:10px}
 .problem-card p{font-size:15px;color:var(--muted);line-height:1.6}
-#how{padding:120px 0;background:var(--surface)}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:60px}
 .step{position:relative}
 .step-number{width:44px;height:44px;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:"DM Serif Display",serif;font-size:20px;color:var(--purple-l);margin-bottom:20px}
 .step h3{font-size:20px;font-weight:600;margin-bottom:12px}
 .step p{font-size:15px;color:var(--muted);line-height:1.7}
 .step-connector{position:absolute;top:22px;right:-20px;color:rgba(124,58,237,0.3);font-size:20px}
-#audience{padding:120px 0}
-.tabs{display:flex;gap:8px;margin:48px 0 40px;background:var(--surface);padding:6px;border-radius:16px;width:fit-content}
-.tab{padding:10px 24px;border-radius:12px;font-size:15px;font-weight:500;cursor:pointer;transition:all 0.2s;color:var(--muted);border:none;background:transparent}
-.tab.active{background:var(--purple);color:#fff}
-.tab:hover:not(.active){color:var(--text)}
-.tab-content{display:none}
-.tab-content.active{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.audience-text h3{font-family:"DM Serif Display",serif;font-size:36px;line-height:1.2;margin-bottom:20px;letter-spacing:-0.5px}
-.audience-text p{font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:32px}
 .feature-list{list-style:none;display:flex;flex-direction:column;gap:12px}
 .feature-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;line-height:1.5}
 .feature-list li::before{content:"\2736";color:var(--purple-l);font-size:12px;margin-top:3px;flex-shrink:0}
-.audience-visual{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:32px}
 .quote-card{background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2);border-radius:16px;padding:20px;margin-bottom:16px}
 .quote-card p{font-size:15px;color:var(--text);line-height:1.6;font-style:italic}
 .quote-author{margin-top:12px;font-size:13px;color:var(--muted)}
-.mini-stat{display:flex;align-items:center;gap:12px;background:var(--card-bg);border-radius:12px;padding:14px 16px;margin-bottom:10px}
-.mini-stat-icon{font-size:20px}
-.mini-stat-text{font-size:14px;color:var(--muted)}
-.mini-stat-text strong{color:var(--text);display:block;font-size:15px;font-weight:600}
 #pdf-section{padding:100px 0;background:var(--surface)}
 .pdf-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .pdf-preview{background:#fff;border-radius:16px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,0.4);color:#1a1a2e}
@@ -169,13 +154,13 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
 @media(max-width:900px){
   nav{padding:16px 24px}
   .container{padding:0 24px}
-  .hero-inner,.tab-content.active,.pdf-inner{grid-template-columns:1fr}
-  .hero-visual,.audience-visual{display:none}
+  .hero-inner,.pdf-inner{grid-template-columns:1fr}
+  .hero-visual{display:none}
   .problem-grid,.steps{grid-template-columns:1fr}
   .step-connector{display:none}
   .pricing-grid{grid-template-columns:1fr;max-width:400px;margin-left:auto;margin-right:auto}
-  .tabs{flex-wrap:wrap}
   #licenses-grid{grid-template-columns:1fr !important}
+  .case-study-grid { grid-template-columns: 1fr; gap: 32px; }
 }
 .segment-chooser { margin-bottom: 28px; }
 .segment-question { font-size: 13px; color: var(--muted); margin-bottom: 10px; letter-spacing: 0.3px; }
@@ -183,11 +168,23 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
 .seg-btn { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 7px 16px; border-radius: 100px; font-size: 13px; cursor: pointer; transition: all 0.2s; font-family: "DM Sans", sans-serif; }
 .seg-btn:hover { border-color: rgba(124,58,237,0.4); color: var(--text); }
 .seg-btn.active { background: rgba(124,58,237,0.15); border-color: rgba(124,58,237,0.4); color: var(--purple-l); }
-#disclaimer-block { padding: 24px 0; background: rgba(245,158,11,0.06); border-top: 1px solid rgba(245,158,11,0.15); border-bottom: 1px solid rgba(245,158,11,0.15); }
-.disclaimer-inner { display: flex; align-items: flex-start; gap: 12px; max-width: 800px; margin: 0 auto; }
-.disclaimer-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; color: var(--amber); }
-#disclaimer-text { font-size: 14px; color: var(--muted); line-height: 1.7; }
-#disclaimer-text a { color: var(--purple-l); }
+.segment-problems { margin-bottom: 80px; }
+.segment-how { margin-bottom: 80px; background: var(--surface); padding: 80px 0; border-radius: 20px; }
+.case-study-section { padding: 80px 0; border-top: 1px solid var(--border); margin-bottom: 0; }
+.case-study-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px; align-items: start; }
+.case-step { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+.case-step-n { width: 32px; height: 32px; background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--purple-l); flex-shrink: 0; }
+.case-step p { font-size: 15px; color: var(--muted); line-height: 1.6; margin: 0; padding-top: 4px; }
+.case-result { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 32px; }
+.result-metric { font-family: "DM Serif Display", serif; font-size: 48px; letter-spacing: -2px; color: var(--purple-l); margin-bottom: 16px; }
+.quote-section { padding: 60px 0; border-top: 1px solid var(--border); }
+.contact-section { padding: 60px 0; border-top: 1px solid var(--border); }
+.contact-inner { background: rgba(124,58,237,0.08); border: 1px solid rgba(124,58,237,0.2); border-radius: 24px; padding: 48px; max-width: 640px; }
+.contact-inner h3 { font-family: "DM Serif Display", serif; font-size: 28px; margin-bottom: 16px; letter-spacing: -0.5px; }
+.contact-inner p { font-size: 16px; color: var(--muted); margin-bottom: 28px; line-height: 1.7; }
+.disclaimer-block { display: flex; align-items: flex-start; gap: 12px; padding: 24px; background: rgba(245,158,11,0.06); border-top: 1px solid rgba(245,158,11,0.15); border-bottom: 1px solid rgba(245,158,11,0.15); border-radius: 12px; margin-top: 40px; }
+.disclaimer-block .disclaimer-icon { font-size: 16px; color: var(--amber); flex-shrink: 0; font-style: italic; font-weight: 700; }
+.disclaimer-block p { font-size: 14px; color: var(--muted); line-height: 1.7; margin: 0; }
 </style>
 </head>
 <body>
@@ -214,7 +211,7 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
         <p id="hero-sub" class="hero-sub">Stop guessing what works for you. Run tiny experiments, track your energy, and discover patterns without pressure, without judgment.</p>
         <div class="hero-actions">
           <a href="https://calmi-experiments.lelekstudio.com/register" class="btn-primary" id="hero-cta">Start your first experiment</a>
-          <a href="#how" class="btn-ghost">See how it works</a>
+          <a href="#content-section" class="btn-ghost">See how it works</a>
         </div>
       </div>
       <div class="hero-visual fade-up" style="animation-delay:0.2s">
@@ -288,144 +285,9 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
   </div>
 </section>
 
-<section id="problem">
-  <div class="container">
-    <div class="fade-up">
-      <div class="section-label">The problem</div>
-      <h2>You have tried everything.<br><em>Nothing sticks.</em></h2>
-      <p class="section-sub">Not because you are broken but because you have been using other people's systems. Your brain works differently. You need data about yourself.</p>
-    </div>
-    <div class="problem-grid" id="problem-grid">
-      <div class="problem-card fade-up">
-        <div class="problem-icon">&#127754;</div>
-        <h3>Too many ideas, no clarity</h3>
-        <p>You start things with energy, lose momentum after 3 days, and never find out if the idea was actually good.</p>
-      </div>
-      <div class="problem-card fade-up" style="transition-delay:0.1s">
-        <div class="problem-icon">&#128202;</div>
-        <h3>Goals feel like pressure</h3>
-        <p>Traditional habit trackers punish you for missing a day. For a neurodivergent brain, that is a recipe for shame.</p>
-      </div>
-      <div class="problem-card fade-up" style="transition-delay:0.2s">
-        <div class="problem-icon">&#128260;</div>
-        <h3>No data, just feelings</h3>
-        <p>You know something is not working, but you cannot explain why. You need patterns, not willpower.</p>
-      </div>
-    </div>
-  </div>
+<section id="content-section">
+  <div class="container" id="dynamic-content"></div>
 </section>
-
-<section id="how">
-  <div class="container">
-    <div class="fade-up">
-      <div class="section-label">How it works</div>
-      <h2>An experiment is<br><em>not</em> a goal.</h2>
-      <p class="section-sub">It is a question. What happens if I try X for a few days? No pressure. Just curiosity. And real data.</p>
-    </div>
-    <div class="steps" id="steps-grid">
-      <div class="step fade-up">
-        <div class="step-number">1</div>
-        <h3>Ask a question</h3>
-        <p>Turn any idea into an experiment. "What happens if I wake up 30 min earlier?" Save ideas to Parking and start when you are ready.</p>
-        <div class="step-connector">&#8594;</div>
-      </div>
-      <div class="step fade-up" style="transition-delay:0.15s">
-        <div class="step-number">2</div>
-        <h3>Check in daily</h3>
-        <p>Rate your energy Low / Medium / High and add a quick note. No streaks. No judgment if you miss a day. Every day counts.</p>
-        <div class="step-connector">&#8594;</div>
-      </div>
-      <div class="step fade-up" style="transition-delay:0.3s">
-        <div class="step-number">3</div>
-        <h3>Discover what works</h3>
-        <p>After the experiment, reflect on what you found. See patterns in your energy. Build actual knowledge about yourself.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="audience">
-  <div class="container">
-    <div class="fade-up">
-      <div class="section-label">Who it is for</div>
-      <h2>Designed for three<br><em>different</em> perspectives.</h2>
-    </div>
-    <div class="tabs fade-up">
-      <button class="tab active" onclick="switchTab('adhd')">ADHD &amp; Neurodiversity</button>
-      <button class="tab" onclick="switchTab('coach')">Coaches</button>
-      <button class="tab" onclick="switchTab('therapist')">Therapists</button>
-    </div>
-    <div class="tab-content active" id="tab-adhd">
-      <div class="audience-text">
-        <h3>Your brain works differently. Your tools should too.</h3>
-        <p>Calmi Experiments is built around how ADHD and neurodivergent minds actually function with curiosity, energy spikes, and variable days. No streaks that punish you. No goals that feel impossible. Just small, honest experiments.</p>
-        <ul class="feature-list">
-          <li>Run one experiment at a time, no overwhelm</li>
-          <li>Park ideas for later, never lose a good thought</li>
-          <li>Energy tracking instead of habit streaks</li>
-          <li>Short daily check-ins under 2 minutes</li>
-          <li>Reflect only when you are ready, no pressure</li>
-          <li>See patterns across weeks, not just days</li>
-        </ul>
-      </div>
-      <div class="audience-visual">
-        <div class="quote-card" id="main-quote"><p>"I have tried every habit app. They all made me feel bad about myself. Calmi Experiments is the first thing that actually gives me data without judgment."</p><div class="quote-author" id="main-quote-author">Adult with ADHD, beta user</div></div>
-        <div class="mini-stat"><span class="mini-stat-icon">&#9889;</span><div class="mini-stat-text"><strong>Variable energy support</strong>Low / Medium / High reflects real days</div></div>
-        <div class="mini-stat"><span class="mini-stat-icon">&#128663;</span><div class="mini-stat-text"><strong>Idea Parking</strong>Save ideas without committing</div></div>
-        <div class="mini-stat"><span class="mini-stat-icon">&#128300;</span><div class="mini-stat-text"><strong>Experiment mindset</strong>Questions not goals, removes shame</div></div>
-      </div>
-    </div>
-    <div class="tab-content" id="tab-coach">
-      <div class="audience-text">
-        <h3>Give clients a tool that works between sessions.</h3>
-        <p>Calmi Experiments fills the gap between coaching sessions. Clients run structured experiments, track their daily experience, and arrive at your next session with real data, not just vague feelings.</p>
-        <ul class="feature-list">
-          <li>Clients self-direct, you guide the experiment design verbally</li>
-          <li>PDF session reports with daily observations and energy patterns</li>
-          <li>Reflection section structured for coaching conversations</li>
-          <li>Built-in accountability without external pressure</li>
-          <li>Works alongside any coaching methodology</li>
-          <li>Promotion codes for your clients</li>
-        </ul>
-      </div>
-      <div class="audience-visual">
-        <div class="quote-card"><p>"My clients come to sessions with actual data now. Instead of I tried but it did not work, they can say I noticed my energy was low on days 2 and 4, here is why."</p><div class="quote-author">Life coach, beta user</div></div>
-        <div class="mini-stat"><span class="mini-stat-icon">&#128196;</span><div class="mini-stat-text"><strong>Session-ready PDF reports</strong>Energy pattern, daily notes, reflection</div></div>
-        <div class="mini-stat"><span class="mini-stat-icon">&#127919;</span><div class="mini-stat-text"><strong>Between-session continuity</strong>Clients stay engaged and reflective</div></div>
-        <div class="mini-stat"><span class="mini-stat-icon">&#128273;</span><div class="mini-stat-text"><strong>Coach access codes</strong>Share premium access with your clients</div></div>
-      </div>
-    </div>
-    <div class="tab-content" id="tab-therapist">
-      <div class="audience-text">
-        <h3>Behavioral homework that clients actually complete.</h3>
-        <p>Calmi Experiments supports behavioral activation and self-monitoring between therapy sessions. Clients track mood-adjacent energy, daily observations, and reflections giving you structured data to work with in session.</p>
-        <ul class="feature-list">
-          <li>Supports behavioral activation and self-monitoring</li>
-          <li>Energy tracking as a mood-adjacent daily measure</li>
-          <li>Structured reflection supports cognitive processing</li>
-          <li>PDF reports provide session continuity</li>
-          <li>Low-friction daily check-ins improve compliance</li>
-          <li>Non-judgmental framing reduces avoidance</li>
-        </ul>
-      </div>
-      <div class="audience-visual">
-        <div class="quote-card"><p>"The experiment framing removes a lot of the I failed narrative. Clients engage with it differently than traditional homework, there is more curiosity, less shame."</p><div class="quote-author">Psychotherapist, beta user</div></div>
-        <div class="mini-stat"><span class="mini-stat-icon">&#128202;</span><div class="mini-stat-text"><strong>Structured self-monitoring</strong>Daily energy and observations across experiment</div></div>
-        <div class="mini-stat"><span class="mini-stat-icon">&#129713;</span><div class="mini-stat-text"><strong>Works with CBT and ACT frameworks</strong>Experiment mindset aligns with behavioral approaches</div></div>
-        <div class="mini-stat"><span class="mini-stat-icon">&#128737;</span><div class="mini-stat-text"><strong>GDPR compliant</strong>Client data stays private and secure</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div id="disclaimer-block" style="display:none">
-  <div class="container">
-    <div class="disclaimer-inner">
-      <span class="disclaimer-icon">ℹ</span>
-      <p id="disclaimer-text"></p>
-    </div>
-  </div>
-</div>
 
 <section id="pdf-section">
   <div class="container">
@@ -532,7 +394,7 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
   </div>
 </section>
 
-<section id="licenses" style="padding:120px 0;background:var(--surface)">
+<section id="contact" style="padding:120px 0;background:var(--surface)">
   <div class="container">
     <div id="licenses-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
       <div class="fade-up">
@@ -631,12 +493,7 @@ var obs=new IntersectionObserver(function(entries){
   });
 },{threshold:0.1});
 document.querySelectorAll(".fade-up").forEach(function(el){obs.observe(el);});
-function switchTab(id){
-  document.querySelectorAll(".tab").forEach(function(t){t.classList.remove("active")});
-  document.querySelectorAll(".tab-content").forEach(function(t){t.classList.remove("active")});
-  document.querySelector("[onclick=\"switchTab(\'"+id+"\')\"]").classList.add("active");
-  document.getElementById("tab-"+id).classList.add("active");
-}
+var segInitialized=false;
 async function sf(e){
   e.preventDefault();
   var btn=e.target.querySelector("button[type=\"submit\"]");
@@ -673,21 +530,6 @@ const HERO_COPY = {
     sub: 'Stop guessing what works for you. Run tiny experiments, track your energy, and discover patterns - without pressure, without judgment.',
     cta: 'Start your first experiment',
     pricingCta: 'Start free',
-    problems: [
-      { icon: '🌊', title: 'Too many ideas, no clarity', text: 'You start things with energy, lose momentum after 3 days, and never find out if the idea was actually good.' },
-      { icon: '📊', title: 'Goals feel like pressure', text: 'Traditional habit trackers punish you for missing a day. For a neurodivergent brain, that is a recipe for shame.' },
-      { icon: '🔄', title: 'No data, just feelings', text: 'You know something is not working, but you cannot explain why. You need patterns, not willpower.' },
-    ],
-    steps: [
-      { n: '1', title: 'Ask a question', text: 'Turn any idea into an experiment. What happens if I wake up 30 min earlier? Save ideas to Parking and start when ready.' },
-      { n: '2', title: 'Check in daily', text: 'Rate your energy Low / Medium / High and add a quick note. No streaks. No judgment if you miss a day.' },
-      { n: '3', title: 'Discover what works', text: 'After the experiment, reflect on what you found. See patterns in your energy. Build actual knowledge about yourself.' },
-    ],
-    quote: {
-      text: 'I have tried every habit app. They all made me feel bad about myself. Calmi Experiments is the first thing that actually gives me data without judgment.',
-      author: 'Adult with ADHD, beta user',
-    },
-    disclaimer: null,
   },
   work: {
     label: '✦ Built for people inside broken processes',
@@ -695,21 +537,6 @@ const HERO_COPY = {
     sub: 'Not hours. Capacity. Find where the friction is, track what drains you, and fix the right thing - with real data.',
     cta: 'Measure your first process',
     pricingCta: 'Start free - measure your first process',
-    problems: [
-      { icon: '⚡', title: 'You have time, but no capacity', text: 'The calendar says 8 hours. Your brain delivers 3. Traditional tools measure hours worked - not what those hours actually cost you.' },
-      { icon: '🔍', title: 'You fix the wrong things', text: 'You optimize the visible process. But the real drain is invisible - the decision fatigue, the context switching, the unclear inputs.' },
-      { icon: '📉', title: 'Burnout creeps in unnoticed', text: 'There is no alarm when your capacity drops. By the time you feel it, you are already running on empty.' },
-    ],
-    steps: [
-      { n: '1', title: 'Name the process', text: 'Pick one workflow that feels heavier than it should. Weekly reporting, client onboarding, content creation - anything.' },
-      { n: '2', title: 'Track your capacity', text: 'Log your energy before, during, and after the task. One tap. No forms. See exactly where the drain happens.' },
-      { n: '3', title: 'Find the bottleneck', text: 'After a week you have data. Not a feeling - data. See which step costs the most and fix that one thing.' },
-    ],
-    quote: {
-      text: 'I always thought I was just bad at deep work. Turns out one specific meeting type was draining 60 percent of my weekly capacity. I moved it and everything changed.',
-      author: 'Startup founder, beta user',
-    },
-    disclaimer: null,
   },
   therapy: {
     label: '✦ For coaches and therapists',
@@ -717,23 +544,215 @@ const HERO_COPY = {
     sub: 'Your clients run structured experiments between sessions and arrive with real data - not just feelings. Skip the recap, go straight to insight.',
     cta: 'Try it with your next client',
     pricingCta: 'Start free - try with your next client',
-    problems: [
-      { icon: '🧠', title: 'Memory is unreliable', text: 'Your client arrives and says it was a hard week. But which moment? What triggered it? Two days later the details are gone.' },
-      { icon: '📋', title: 'Homework rarely gets done', text: 'You assign a reflection exercise. Next session: they forgot, or did it once, or cannot remember what they noticed.' },
-      { icon: '🔗', title: 'Sessions start from scratch', text: 'Twenty minutes to recap the week before you can do real work. Every session. That is time neither of you can afford.' },
-    ],
-    steps: [
-      { n: '1', title: 'Assign an experiment', text: 'You design the question. Your client runs it in the app between sessions - tracking energy and observations each day.' },
-      { n: '2', title: 'Client logs in real time', text: 'Thoughts captured when they happen, not reconstructed from memory. Low / Medium / High energy plus a note. Under 2 minutes.' },
-      { n: '3', title: 'Arrive with data', text: 'Your client brings a PDF report to the session. Skip the recap. Start with the pattern that actually needs attention.' },
-    ],
-    quote: {
-      text: 'The experiment framing removes the I failed narrative. Clients engage with curiosity instead of shame - and they actually complete the homework.',
-      author: 'Psychotherapist, beta user',
-    },
-    disclaimer: 'Calmi Experiments is a self-tracking tool, not a medical product. It does not replace therapy, psychiatric care, or professional mental health support. If you are experiencing distress, please contact a qualified specialist.',
   },
 };
+
+const SEGMENT_CONTENT = {
+
+personal: {
+  problems: [
+    { icon: '🌊', title: 'Too many ideas, no clarity',
+      text: 'You start things with energy, lose momentum after 3 days, and never find out if the idea was actually good.' },
+    { icon: '📊', title: 'Goals feel like pressure',
+      text: 'Traditional habit trackers punish you for missing a day. For a neurodivergent brain, that is a recipe for shame.' },
+    { icon: '🔄', title: 'No data, just feelings',
+      text: 'You know something is not working, but you cannot explain why. You need patterns, not willpower.' },
+  ],
+  steps: [
+    { n: '1', title: 'Ask a question',
+      text: 'Turn any idea into an experiment. What happens if I wake up 30 min earlier? Save ideas to Parking and start when ready.' },
+    { n: '2', title: 'Check in daily',
+      text: 'Rate your energy Low / Medium / High and add a quick note. No streaks. No judgment if you miss a day.' },
+    { n: '3', title: 'Discover what works',
+      text: 'After the experiment, reflect on what you found. See patterns in your energy. Build actual knowledge about yourself.' },
+  ],
+  quote: {
+    text: 'I have tried every habit app. They all made me feel bad about myself. Calmi Experiments is the first thing that actually gives me data without judgment.',
+    author: 'Adult with ADHD, beta user',
+  },
+  caseStudy: {
+    label: 'Real use case',
+    title: 'Morning walks experiment',
+    scenario: 'A user with ADHD wanted to know if morning walks actually helped their focus - or if it was just something people said.',
+    steps: [
+      'Created experiment: "What happens if I walk 20 min before starting work?"',
+      'Logged energy Low/Medium/High each morning for 7 days',
+      'Added notes on days that felt different',
+      'After 7 days: reflected on the pattern',
+    ],
+    result: 'On 5 out of 7 days with a walk, energy at T1 was Medium or High. On days without - Low. First time they had actual data, not just a feeling.',
+    metric: '5/7 days higher energy',
+  },
+  disclaimer: 'Calmi Experiments is a self-tracking tool, not a medical product. It does not replace therapy, psychiatric care, or professional mental health support. If you are experiencing distress, please contact a qualified specialist.',
+},
+
+work: {
+  problems: [
+    { icon: '⚡', title: 'You have time, but no capacity',
+      text: 'The calendar says 8 hours. Your brain delivers 3. Traditional tools measure hours worked - not what those hours actually cost you.' },
+    { icon: '🔍', title: 'You fix the wrong things',
+      text: 'You optimize the visible process. The real drain is invisible - decision fatigue, context switching, unclear inputs.' },
+    { icon: '📉', title: 'Burnout creeps in unnoticed',
+      text: 'There is no alarm when your capacity drops. By the time you feel it, you are already running on empty.' },
+  ],
+  steps: [
+    { n: '1', title: 'Name the process',
+      text: 'Pick one workflow that feels heavier than it should. Weekly reporting, client onboarding, content creation.' },
+    { n: '2', title: 'Track your capacity',
+      text: 'Log your energy before, during, and after the task. One tap. See exactly where the drain happens.' },
+    { n: '3', title: 'Find the bottleneck',
+      text: 'After a week you have data. Not a feeling - data. See which step costs the most and fix that one thing.' },
+  ],
+  quote: {
+    text: 'I always thought I was just bad at deep work. Turns out one specific meeting type was draining 60 percent of my weekly capacity. I moved it and everything changed.',
+    author: 'Startup founder, beta user',
+  },
+  caseStudy: {
+    label: 'Real use case',
+    title: 'Weekly reporting bottleneck',
+    scenario: 'An early-stage startup team noticed every Friday was a write-off. Nobody could explain why reporting took so long or felt so draining.',
+    steps: [
+      'Named the experiment: "Measure capacity cost of weekly report"',
+      'Each team member logged capacity at T0, T1, T2, T3 during the process',
+      'Added friction notes: what slowed them down at each step',
+      'After 2 weeks: compared capacity drops across the team',
+    ],
+    result: 'The data showed a 40% capacity drop at step T2 - the moment they had to pull data from three different tools. One integration removed that step entirely.',
+    metric: '40% capacity recovered',
+  },
+  contact: {
+    title: 'Need licenses for your team?',
+    text: 'If your startup or team wants to run capacity experiments together, get in touch. We can set up access codes for your whole team.',
+    cta: 'Contact us',
+  },
+  disclaimer: null,
+},
+
+therapy: {
+  problems: [
+    { icon: '🧠', title: 'Memory is unreliable',
+      text: 'Your client arrives and says it was a hard week. But which moment? What triggered it? Two days later the details are gone.' },
+    { icon: '📋', title: 'Homework rarely gets done',
+      text: 'You assign a reflection exercise. Next session: they forgot, or did it once, or cannot remember what they noticed.' },
+    { icon: '🔗', title: 'Sessions start from scratch',
+      text: '20 minutes to recap the week before you can do real work. Every session. That is time neither of you can afford.' },
+  ],
+  steps: [
+    { n: '1', title: 'Assign an experiment',
+      text: 'You design the question. Your client runs it in the app between sessions - tracking energy and observations each day.' },
+    { n: '2', title: 'Client logs in real time',
+      text: 'Thoughts captured when they happen, not reconstructed from memory. Under 2 minutes per check-in.' },
+    { n: '3', title: 'Arrive with data',
+      text: 'Your client brings a PDF report to the session. Skip the recap. Start with the pattern that actually needs attention.' },
+  ],
+  quote: {
+    text: 'The experiment framing removes the I failed narrative. Clients engage with curiosity instead of shame - and they actually complete the homework.',
+    author: 'Psychotherapist, beta user',
+  },
+  caseStudy: {
+    label: 'Real use case',
+    title: 'Behavioral activation between sessions',
+    scenario: 'A therapist working with clients on burnout wanted structured data between sessions - not just subjective recall.',
+    steps: [
+      'Assigned experiment: "Track your energy before and after your top 3 daily activities"',
+      'Client logged capacity for 10 days using Low/Medium/High',
+      'Added real-time notes on what triggered drops',
+      'Brought PDF report to next session',
+    ],
+    result: 'The data showed the client\'s capacity consistently dropped after video calls, not after deep work as they assumed. Reframing the problem changed the entire therapeutic direction.',
+    metric: 'Session time on insight: +60%',
+  },
+  contact: {
+    title: 'Using this with multiple clients?',
+    text: 'If you are a coach or therapist and want to use Calmi Experiments with several clients, we can provide access codes and a discount.',
+    cta: 'Get in touch',
+  },
+  disclaimer: 'Calmi Experiments is a self-tracking tool, not a medical product. It does not replace therapy, psychiatric care, or professional mental health support. If you are experiencing distress, please contact a qualified specialist.',
+},
+
+};
+
+function renderSegment(seg) {
+  const s = SEGMENT_CONTENT[seg];
+  if (!s) return;
+  const dc = document.getElementById('dynamic-content');
+  if (!dc) return;
+
+  const problemsHTML = s.problems.map(p => `
+    <div class="problem-card">
+      <div class="problem-icon">${p.icon}</div>
+      <h3>${p.title}</h3>
+      <p>${p.text}</p>
+    </div>`).join('');
+
+  const stepsHTML = s.steps.map((st, i) => `
+    <div class="step">
+      <div class="step-number">${st.n}</div>
+      <h3>${st.title}</h3>
+      <p>${st.text}</p>
+      ${i < 2 ? '<div class="step-connector">→</div>' : ''}
+    </div>`).join('');
+
+  const caseStudyHTML = s.caseStudy ? `
+    <div class="case-study-section">
+      <div class="section-label">${s.caseStudy.label}</div>
+      <h2>${s.caseStudy.title}</h2>
+      <p class="section-sub">${s.caseStudy.scenario}</p>
+      <div class="case-study-grid">
+        <div class="case-steps">
+          ${s.caseStudy.steps.map((step, i) => `
+            <div class="case-step">
+              <div class="case-step-n">${i + 1}</div>
+              <p>${step}</p>
+            </div>`).join('')}
+        </div>
+        <div class="case-result">
+          <div class="result-metric">${s.caseStudy.metric}</div>
+          <p>${s.caseStudy.result}</p>
+        </div>
+      </div>
+    </div>` : '';
+
+  const quoteHTML = s.quote ? `
+    <div class="quote-section">
+      <div class="quote-card">
+        <p>${s.quote.text}</p>
+        <div class="quote-author">${s.quote.author}</div>
+      </div>
+    </div>` : '';
+
+  const contactHTML = s.contact ? `
+    <div class="contact-section">
+      <div class="contact-inner">
+        <h3>${s.contact.title}</h3>
+        <p>${s.contact.text}</p>
+        <a href="#contact" class="btn-primary" style="display:inline-flex">
+          ${s.contact.cta}
+        </a>
+      </div>
+    </div>` : '';
+
+  const disclaimerHTML = s.disclaimer ? `
+    <div class="disclaimer-block">
+      <span class="disclaimer-icon">i</span>
+      <p>${s.disclaimer}</p>
+    </div>` : '';
+
+  dc.innerHTML = `
+    <div class="segment-problems">
+      <div class="section-label">The problem</div>
+      <div class="problem-grid">${problemsHTML}</div>
+    </div>
+    <div class="segment-how">
+      <div class="section-label">How it works</div>
+      <div class="steps">${stepsHTML}</div>
+    </div>
+    ${caseStudyHTML}
+    ${quoteHTML}
+    ${contactHTML}
+    ${disclaimerHTML}
+  `;
+}
 
 function switchSeg(seg) {
   const copy = HERO_COPY[seg];
@@ -749,59 +768,14 @@ function switchSeg(seg) {
     btn.classList.toggle('active', btn.dataset.seg === seg);
   });
 
-  const pg = document.getElementById('problem-grid');
-  if (pg && copy.problems) {
-    pg.innerHTML = copy.problems.map(p => `
-      <div class="problem-card fade-up">
-        <div class="problem-icon">${p.icon}</div>
-        <h3>${p.title}</h3>
-        <p>${p.text}</p>
-      </div>`).join('');
-  }
+  renderSegment(seg);
 
-  const sg = document.getElementById('steps-grid');
-  if (sg && copy.steps) {
-    sg.innerHTML = copy.steps.map((s, i) => `
-      <div class="step fade-up">
-        <div class="step-number">${s.n}</div>
-        <h3>${s.title}</h3>
-        <p>${s.text}</p>
-        ${i < 2 ? '<div class="step-connector">→</div>' : ''}
-      </div>`).join('');
-  }
-
-  const qq = document.getElementById('main-quote');
-  const qa = document.getElementById('main-quote-author');
-  if (qq && copy.quote) {
-    const qp = qq.querySelector('p');
-    if (qp) qp.textContent = copy.quote.text;
-    if (qa) qa.textContent = copy.quote.author;
-  }
-  if (copy.quote) {
-    document.querySelectorAll('#audience .tab-content .audience-visual .quote-card').forEach(card => {
-      if (card.id === 'main-quote') return;
-      const pEl = card.querySelector('p');
-      const aEl = card.querySelector('.quote-author');
-      if (pEl) pEl.textContent = copy.quote.text;
-      if (aEl) aEl.textContent = copy.quote.author;
-    });
-  }
-
-  const db = document.getElementById('disclaimer-block');
-  const dt = document.getElementById('disclaimer-text');
-  if (db && dt) {
-    if (copy.disclaimer) {
-      dt.textContent = copy.disclaimer;
-      db.style.display = 'block';
-    } else {
-      db.style.display = 'none';
-    }
+  if (segInitialized) {
+    const cs = document.getElementById('content-section');
+    if (cs) cs.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   sessionStorage.setItem('calmi-seg', seg);
-  const segToTab = { personal: 'adhd', work: 'coach', therapy: 'therapist' };
-  const tabTarget = segToTab[seg];
-  if (tabTarget && typeof switchTab === 'function') switchTab(tabTarget);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -810,6 +784,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   const saved = sessionStorage.getItem('calmi-seg');
   switchSeg(saved && HERO_COPY[saved] ? saved : 'personal');
+  segInitialized = true;
 });
 </script>
 </body>
