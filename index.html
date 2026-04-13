@@ -774,7 +774,8 @@ function switchSeg(seg) {
   const qq = document.getElementById('main-quote');
   const qa = document.getElementById('main-quote-author');
   if (qq && copy.quote) {
-    qq.querySelector('p').textContent = copy.quote.text;
+    const qp = qq.querySelector('p');
+    if (qp) qp.textContent = copy.quote.text;
     if (qa) qa.textContent = copy.quote.author;
   }
   if (copy.quote) {
