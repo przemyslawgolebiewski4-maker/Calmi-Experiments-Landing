@@ -498,7 +498,7 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
           <li><span class="check">&#10003;</span> PDF session reports</li>
           <li><span class="check">&#10003;</span> Priority support</li>
         </ul>
-        <a href="https://calmi-experiments.lelekstudio.com/register" class="pricing-cta primary">Start yearly plan</a>
+        <a href="https://calmi-experiments.lelekstudio.com/register" class="pricing-cta primary" data-cta="pricing">Start yearly plan</a>
       </div>
       <div class="pricing-card fade-up" style="transition-delay:0.2s">
         <div class="pricing-name">Lifetime</div>
@@ -657,20 +657,23 @@ const HERO_COPY = {
   personal: {
     label: '✦ Built for neurodivergent minds',
     h1: 'Small experiments.<br><em>Real</em> self-knowledge.',
-    sub: 'Stop guessing what works for you. Run tiny experiments, track your energy, and discover patterns — without pressure, without judgment.',
+    sub: 'Stop guessing what works for you. Run tiny experiments, track your energy, and discover patterns - without pressure, without judgment.',
     cta: 'Start your first experiment',
+    pricingCta: 'Start free',
   },
   work: {
     label: '✦ Built for people inside broken processes',
     h1: 'Measure what your work<br><em>actually</em> costs you.',
-    sub: 'Not hours. Capacity. Find where the friction is, track what drains you, and fix the right thing — with real data.',
+    sub: 'Not hours. Capacity. Find where the friction is, track what drains you, and fix the right thing - with real data.',
     cta: 'Measure your first process',
+    pricingCta: 'Start free - measure your first process',
   },
   therapy: {
     label: '✦ For coaches and therapists',
     h1: 'Behavioral homework<br>clients <em>actually</em> complete.',
-    sub: 'Your clients run structured experiments between sessions and arrive with real data — not just feelings. Skip the recap, go straight to insight.',
+    sub: 'Your clients run structured experiments between sessions and arrive with real data - not just feelings. Skip the recap, go straight to insight.',
     cta: 'Try it with your next client',
+    pricingCta: 'Start free - try with your next client',
   },
 };
 
@@ -681,10 +684,16 @@ function switchSeg(seg) {
   document.getElementById('hero-h1').innerHTML = copy.h1;
   document.getElementById('hero-sub').textContent = copy.sub;
   document.getElementById('hero-cta').textContent = copy.cta;
+  document.querySelectorAll('[data-cta="pricing"]').forEach(el => {
+    el.textContent = copy.pricingCta;
+  });
   document.querySelectorAll('.seg-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.seg === seg);
   });
   sessionStorage.setItem('calmi-seg', seg);
+  const segToTab = { personal: 'adhd', work: 'coach', therapy: 'therapist' };
+  const tabTarget = segToTab[seg];
+  if (tabTarget && typeof switchTab === 'function') switchTab(tabTarget);
 }
 
 document.querySelectorAll('.seg-btn').forEach(btn => {
