@@ -4,217 +4,305 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Calmi Experiments - Small experiments. Real self-knowledge.</title>
-<meta name="description" content="Calmi Experiments helps neurodivergent individuals, coaches, and therapists run small life experiments and discover what actually works."/>
+<meta name="description" content="Replace goals with experiments. Track your energy, discover patterns, and understand yourself - without judgment, without streaks."/>
 <link rel="canonical" href="https://calmiexperiments.lelekstudio.com"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://calmiexperiments.lelekstudio.com"/>
 <meta property="og:title" content="Calmi Experiments - Small experiments. Real self-knowledge."/>
-<meta property="og:description" content="Run small life experiments. Track your energy. Discover what actually works for you."/>
+<meta property="og:description" content="Replace goals with experiments. Track your energy, discover patterns, and understand yourself - without judgment, without streaks."/>
 <meta property="og:image" content="https://calmiexperiments.lelekstudio.com/og-image.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:site_name" content="Calmi Experiments"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Calmi Experiments - Small experiments. Real self-knowledge."/>
-<meta name="twitter:description" content="Run small life experiments. Track your energy. Discover what actually works for you."/>
+<meta name="twitter:description" content="Replace goals with experiments. Track your energy, discover patterns, and understand yourself - without judgment, without streaks."/>
 <meta name="twitter:image" content="https://calmiexperiments.lelekstudio.com/og-image.png"/>
 <meta name="robots" content="index,follow"/>
 <meta name="author" content="Calmi Experiments"/>
-<meta name="keywords" content="ADHD app,neurodivergent tools,self experimentation,habit tracking,coaching tool,therapist app,energy tracking"/>
+<meta name="keywords" content="ADHD app, neurodivergent tools, self experimentation, energy tracking, coaching tool, therapist app, creative practice"/>
 <meta name="theme-color" content="#7c3aed"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Calmi Experiments","url":"https://calmiexperiments.lelekstudio.com","description":"Run small life experiments.","applicationCategory":"HealthApplication","operatingSystem":"Web","offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD"},{"@type":"Offer","name":"Monthly","price":"2.99","priceCurrency":"USD"},{"@type":"Offer","name":"Yearly","price":"19.99","priceCurrency":"USD"},{"@type":"Offer","name":"Lifetime","price":"39.99","priceCurrency":"USD"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Calmi Experiments","url":"https://calmiexperiments.lelekstudio.com","description":"Replace goals with experiments. Track your energy, discover patterns, and understand yourself.","applicationCategory":"HealthApplication","operatingSystem":"Web","offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD"},{"@type":"Offer","name":"Monthly","price":"2.99","priceCurrency":"USD"},{"@type":"Offer","name":"Yearly","price":"19.99","priceCurrency":"USD"},{"@type":"Offer","name":"Lifetime","price":"39.99","priceCurrency":"USD"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0e0e18;--surface:#14142a;--surface2:#1a1a38;--border:rgba(255,255,255,0.07);--purple:#7c3aed;--purple-l:#9d65f5;--amber:#f59e0b;--green:#10b981;--red:#ef4444;--text:#f0f0f8;--muted:#8e8ea8;--card-bg:rgba(255,255,255,0.04)}
+:root{
+  --bg:#0a0a14;
+  --surface:#11111f;
+  --surface2:#18182e;
+  --border:rgba(255,255,255,0.06);
+  --border-hover:rgba(124,58,237,0.35);
+  --purple:#7c3aed;
+  --purple-l:#a78bfa;
+  --purple-dim:rgba(124,58,237,0.12);
+  --amber:#f59e0b;
+  --green:#10b981;
+  --pink:#ec4899;
+  --text:#eeeef8;
+  --muted:#7a7a9a;
+  --muted2:#545470;
+  --card:rgba(255,255,255,0.03)
+}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(14,14,24,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.logo{font-family:"DM Serif Display",serif;font-size:22px;letter-spacing:-0.5px;color:var(--text);text-decoration:none}
-.logo span{color:var(--purple-l)}
-.cta-small{background:var(--purple);color:#fff;padding:10px 22px;border-radius:100px;font-size:14px;font-weight:600;text-decoration:none;transition:background 0.2s}
-.cta-small:hover{background:var(--purple-l)}
-section{position:relative;z-index:1}
-.container{max-width:1100px;margin:0 auto;padding:0 40px}
+body{background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,20,0.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.logo{font-family:"DM Serif Display",serif;font-size:20px;letter-spacing:-0.5px;color:var(--text);text-decoration:none}
+.logo em{font-style:italic;color:var(--purple-l)}
+.nav-cta{background:var(--purple);color:#fff;padding:9px 22px;border-radius:100px;font-size:14px;font-weight:600;text-decoration:none;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.85}
+
+/* LAYOUT */
+.container{max-width:1080px;margin:0 auto;padding:0 40px}
+section{position:relative}
+
+/* HERO */
 #hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;overflow:hidden}
-.hero-glow{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(124,58,237,0.18) 0%,transparent 70%);top:-100px;left:50%;transform:translateX(-50%);pointer-events:none}
-.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.hero-label{display:inline-flex;align-items:center;gap:8px;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);border-radius:100px;padding:6px 14px;font-size:13px;color:var(--purple-l);font-weight:500;margin-bottom:24px}
-.dot{width:6px;height:6px;background:var(--purple-l);border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-h1{font-family:"DM Serif Display",serif;font-size:clamp(42px,5vw,64px);line-height:1.1;letter-spacing:-1.5px;margin-bottom:24px}
+.hero-glow{position:absolute;width:800px;height:800px;background:radial-gradient(circle,rgba(124,58,237,0.14) 0%,transparent 65%);top:-200px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:0}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
+
+/* segment chooser */
+.seg-chooser{margin-bottom:32px}
+.seg-q{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;font-weight:500}
+.seg-options{display:flex;gap:8px}
+.seg-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:8px 18px;border-radius:100px;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;font-family:"DM Sans",sans-serif;letter-spacing:0.2px}
+.seg-btn:hover{border-color:rgba(124,58,237,0.4);color:var(--text)}
+.seg-btn.active{background:var(--purple-dim);border-color:rgba(124,58,237,0.5);color:var(--purple-l)}
+
+/* hero text */
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.25);border-radius:100px;padding:5px 14px;font-size:12px;color:var(--purple-l);font-weight:500;letter-spacing:0.3px;margin-bottom:24px}
+.dot{width:5px;height:5px;background:var(--purple-l);border-radius:50%;animation:pulse 2.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.35}}
+h1{font-family:"DM Serif Display",serif;font-size:clamp(38px,4.5vw,62px);line-height:1.08;letter-spacing:-1.5px;margin-bottom:22px}
 h1 em,h2 em{font-style:italic;color:var(--purple-l)}
-.hero-sub{font-size:18px;color:var(--muted);line-height:1.7;margin-bottom:40px;max-width:460px}
-.hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--purple);color:#fff;padding:16px 32px;border-radius:14px;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.2s;box-shadow:0 8px 30px rgba(124,58,237,0.35)}
-.btn-primary:hover{background:var(--purple-l);transform:translateY(-2px)}
-.btn-ghost{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:15px;text-decoration:none;transition:color 0.2s}
+.hero-sub{font-size:17px;color:var(--muted);line-height:1.75;margin-bottom:36px;max-width:440px}
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:#fff;padding:15px 28px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.2s;box-shadow:0 6px 24px rgba(124,58,237,0.3)}
+.btn-primary:hover{opacity:0.88;transform:translateY(-1px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-size:14px;text-decoration:none;transition:color 0.2s}
 .btn-ghost:hover{color:var(--text)}
-.phone-mockup{background:#1a1a2e;border:1px solid rgba(255,255,255,0.07);border-radius:16px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,0.6)}
-.mock-topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.06)}
-.mock-back{width:32px;height:32px;background:#16213e;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff}
-.mock-topbar-title{font-size:15px;font-weight:600;color:#fff}
-.mock-pdf-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;color:#7c3aed;font-size:16px}
-.mock-content{padding:18px}
-.mock-exp-title{font-size:20px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.2}
-.mock-meta-row{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
-.mock-badge-active{background:rgba(16,185,129,0.15);color:#10b981;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600}
-.mock-badge-cat{font-size:12px;color:#6b7280}
-.mock-exp-desc{font-size:13px;color:#9ca3af;margin-bottom:14px;line-height:1.5}
-.mock-day-card{background:#16213e;border-radius:12px;padding:14px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px}
-.mock-day-icon{font-size:18px}
-.mock-day-label{font-size:14px;font-weight:600;color:#fff}
-.mock-day-sub{font-size:12px;color:#6b7280}
-.mock-section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.mock-section-title{font-size:15px;font-weight:600;color:#fff}
-.mock-section-count{background:#16213e;color:#6b7280;width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px}
-.mock-note{background:#16213e;border-radius:12px;padding:14px;margin-bottom:8px}
-.mock-note-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.mock-note-day{font-size:13px;font-weight:600;color:#fff}
-.mock-note-date{font-size:11px;color:#6b7280}
-.mock-note-text{font-size:13px;color:#9ca3af;line-height:1.5}
-.mock-badge-low{background:rgba(239,68,68,0.15);color:#ef4444;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600}
-.mock-badge-medium{background:rgba(245,158,11,0.15);color:#f59e0b;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600}
-.mock-badge-high{background:rgba(16,185,129,0.15);color:#10b981;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600}
-.mock-actions{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid rgba(255,255,255,0.06)}
-.mock-btn-add{background:#7c3aed;color:#fff;padding:14px 8px;font-size:13px;font-weight:600;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px}
-.mock-btn-pause{background:#1a1a2e;color:#f59e0b;padding:14px 8px;font-size:13px;font-weight:600;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px;border-left:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.06)}
-.mock-btn-end{background:#1a1a2e;color:#10b981;padding:14px 8px;font-size:13px;font-weight:600;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px}
-.trust-bar{padding:32px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.trust-inner{display:flex;align-items:center;gap:48px;flex-wrap:wrap;justify-content:center}
-.trust-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted)}
-.section-label{font-size:13px;text-transform:uppercase;letter-spacing:2px;color:var(--purple-l);font-weight:600;margin-bottom:16px}
-h2{font-family:"DM Serif Display",serif;font-size:clamp(32px,4vw,52px);line-height:1.15;letter-spacing:-1px;margin-bottom:20px}
-.section-sub{font-size:18px;color:var(--muted);max-width:560px;line-height:1.7}
-#content-section{padding:80px 0}
-.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
-.problem-card{background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:28px;transition:border-color 0.3s,transform 0.3s}
-.problem-card:hover{border-color:rgba(124,58,237,0.3);transform:translateY(-4px)}
-.problem-icon{font-size:28px;margin-bottom:16px}
-.problem-card h3{font-size:18px;font-weight:600;margin-bottom:10px}
-.problem-card p{font-size:15px;color:var(--muted);line-height:1.6}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:60px}
+
+/* MOCKUP */
+.phone-mockup{background:#12122a;border:1px solid rgba(255,255,255,0.08);border-radius:18px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,0.7),inset 0 1px 0 rgba(255,255,255,0.05)}
+.mock-topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.mock-back{width:30px;height:30px;background:#1a1a3a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff}
+.mock-topbar-title{font-size:14px;font-weight:600;color:#fff}
+.mock-pdf-icon{width:26px;height:26px;display:flex;align-items:center;justify-content:center;color:#7c3aed;font-size:14px}
+.mock-content{padding:16px}
+.mock-exp-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.25}
+.mock-meta-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.mock-badge-active{background:rgba(16,185,129,0.15);color:#10b981;padding:3px 9px;border-radius:100px;font-size:11px;font-weight:600}
+.mock-badge-cat{font-size:11px;color:#6b7280}
+.mock-progress-card{background:#1a1a38;border-radius:11px;padding:12px 14px;margin-bottom:14px}
+.mock-progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.mock-progress-label{font-size:13px;font-weight:600;color:#fff}
+.mock-progress-pct{font-size:12px;font-weight:600;color:#7c3aed}
+.mock-progress-track{height:5px;background:#0a0a14;border-radius:10px;overflow:hidden}
+.mock-progress-fill{height:100%;width:57%;background:#7c3aed;border-radius:10px}
+.mock-section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.mock-section-title{font-size:13px;font-weight:600;color:#fff}
+.mock-section-count{background:#1a1a38;color:#6b7280;padding:2px 8px;border-radius:5px;font-size:11px}
+.mock-note{background:#1a1a38;border-radius:10px;padding:11px;margin-bottom:6px}
+.mock-note-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
+.mock-note-day{font-size:12px;font-weight:600;color:#fff}
+.mock-note-date{font-size:10px;color:#6b7280}
+.mock-note-text{font-size:12px;color:#9ca3af;line-height:1.45}
+.mock-badge-low{background:rgba(239,68,68,0.15);color:#ef4444;padding:2px 7px;border-radius:5px;font-size:10px;font-weight:600}
+.mock-badge-medium{background:rgba(245,158,11,0.15);color:#f59e0b;padding:2px 7px;border-radius:5px;font-size:10px;font-weight:600}
+.mock-badge-high{background:rgba(16,185,129,0.15);color:#10b981;padding:2px 7px;border-radius:5px;font-size:10px;font-weight:600}
+.mock-actions{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid rgba(255,255,255,0.05)}
+.mock-btn-add{background:#7c3aed;color:#fff;padding:12px 6px;font-size:12px;font-weight:600;text-align:center;display:flex;align-items:center;justify-content:center;gap:4px}
+.mock-btn-pause{background:#12122a;color:#f59e0b;padding:12px 6px;font-size:12px;font-weight:600;text-align:center;display:flex;align-items:center;justify-content:center;gap:4px;border-left:1px solid rgba(255,255,255,0.05);border-right:1px solid rgba(255,255,255,0.05)}
+.mock-btn-end{background:#12122a;color:#10b981;padding:12px 6px;font-size:12px;font-weight:600;text-align:center;display:flex;align-items:center;justify-content:center;gap:4px}
+
+/* TRUST BAR */
+.trust-bar{padding:28px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.trust-inner{display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:center}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);font-weight:500}
+
+/* SECTION HEADINGS */
+.section-label{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--purple-l);font-weight:600;margin-bottom:14px}
+h2{font-family:"DM Serif Display",serif;font-size:clamp(28px,3.5vw,48px);line-height:1.12;letter-spacing:-0.8px;margin-bottom:18px}
+.section-sub{font-size:17px;color:var(--muted);max-width:520px;line-height:1.75}
+
+/* HOW IT WORKS */
+#how{padding:100px 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:56px;position:relative}
+.steps::before{content:"";position:absolute;top:22px;left:calc(33.33% - 4px);right:calc(33.33% - 4px);height:1px;background:linear-gradient(90deg,transparent,rgba(124,58,237,0.3),rgba(124,58,237,0.3),transparent);pointer-events:none}
 .step{position:relative}
-.step-number{width:44px;height:44px;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:"DM Serif Display",serif;font-size:20px;color:var(--purple-l);margin-bottom:20px}
-.step h3{font-size:20px;font-weight:600;margin-bottom:12px}
-.step p{font-size:15px;color:var(--muted);line-height:1.7}
-.step-connector{position:absolute;top:22px;right:-20px;color:rgba(124,58,237,0.3);font-size:20px}
-.feature-list{list-style:none;display:flex;flex-direction:column;gap:12px}
-.feature-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;line-height:1.5}
-.feature-list li::before{content:"\2736";color:var(--purple-l);font-size:12px;margin-top:3px;flex-shrink:0}
-.quote-card{background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2);border-radius:16px;padding:20px;margin-bottom:16px}
-.quote-card p{font-size:15px;color:var(--text);line-height:1.6;font-style:italic}
-.quote-author{margin-top:12px;font-size:13px;color:var(--muted)}
+.step-n{width:44px;height:44px;background:var(--purple-dim);border:1px solid rgba(124,58,237,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:"DM Serif Display",serif;font-size:18px;color:var(--purple-l);margin-bottom:20px}
+.step h3{font-size:18px;font-weight:600;margin-bottom:10px;letter-spacing:-0.2px}
+.step p{font-size:14px;color:var(--muted);line-height:1.7}
+
+/* WHO IT'S FOR */
+#who{padding:100px 0;background:var(--surface)}
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:56px}
+.who-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;transition:border-color 0.3s,transform 0.3s;position:relative;overflow:hidden}
+.who-card:hover{border-color:var(--border-hover);transform:translateY(-3px)}
+.who-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity 0.3s}
+.who-card:hover::before{opacity:1}
+.who-card.personal::before{background:linear-gradient(90deg,var(--purple),var(--purple-l))}
+.who-card.art::before{background:linear-gradient(90deg,var(--pink),#f97316)}
+.who-icon{font-size:32px;margin-bottom:18px}
+.who-card h3{font-size:20px;font-weight:600;margin-bottom:10px;letter-spacing:-0.3px}
+.who-card p{font-size:14px;color:var(--muted);line-height:1.7}
+.who-tag{display:inline-block;margin-top:16px;font-size:12px;font-weight:600;padding:4px 12px;border-radius:100px}
+.who-card.personal .who-tag{background:rgba(124,58,237,0.12);color:var(--purple-l)}
+.who-card.art .who-tag{background:rgba(236,72,153,0.12);color:var(--pink)}
+
+/* WHY EXPERIMENT */
+#why{padding:100px 0}
+.why-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.contrast-table{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.contrast-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
+.contrast-row:last-child{border-bottom:none}
+.contrast-cell{padding:14px 18px;font-size:13px;line-height:1.5}
+.contrast-cell.bad{color:var(--muted2);background:rgba(239,68,68,0.03)}
+.contrast-cell.bad::before{content:"✗  ";color:#ef444460}
+.contrast-cell.good{color:var(--text);background:rgba(124,58,237,0.04)}
+.contrast-cell.good::before{content:"✦  ";color:var(--purple-l)}
+.contrast-header{display:grid;grid-template-columns:1fr 1fr}
+.contrast-header div{padding:10px 18px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted2)}
+.contrast-header div:last-child{color:var(--purple-l)}
+
+/* QUOTE */
+.quote-block{background:rgba(124,58,237,0.07);border:1px solid rgba(124,58,237,0.18);border-radius:16px;padding:28px 32px;margin-top:40px}
+.quote-block p{font-size:16px;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:12px}
+.quote-author{font-size:12px;color:var(--muted);font-weight:500}
+
+/* PDF SECTION */
 #pdf-section{padding:100px 0;background:var(--surface)}
 .pdf-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.pdf-preview{background:#fff;border-radius:16px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,0.4);color:#1a1a2e}
-.pdf-header{border-bottom:2px solid #7c3aed;padding-bottom:16px;margin-bottom:20px}
-.pdf-brand{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:#7c3aed;margin-bottom:4px}
-.pdf-title-text{font-size:18px;font-weight:700;color:#1a1a2e}
-.pdf-meta{font-size:12px;color:#6b7280}
-.pdf-section-title{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#7c3aed;margin:16px 0 8px;font-weight:600}
-.pdf-energy-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #f3f4f6;font-size:13px;color:#374151}
-.pdf-day{color:#6b7280;width:40px}
-.pdf-summary-box{background:#f9fafb;border-radius:8px;padding:12px;margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.pdf-summary-item{font-size:12px;color:#6b7280}
-.pdf-summary-item strong{display:block;font-size:14px;color:#1a1a2e}
-#pricing{padding:120px 0}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
-.pricing-card{background:var(--card-bg);border:1px solid var(--border);border-radius:24px;padding:32px;position:relative;transition:transform 0.3s,border-color 0.3s}
+.feature-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.feature-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--muted);line-height:1.5}
+.feature-list li::before{content:"✦";color:var(--purple-l);font-size:11px;margin-top:3px;flex-shrink:0}
+.pdf-preview{background:#fff;border-radius:16px;padding:26px;box-shadow:0 30px 80px rgba(0,0,0,0.5);color:#1a1a2e}
+.pdf-header{border-bottom:2px solid #7c3aed;padding-bottom:14px;margin-bottom:18px}
+.pdf-brand{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#7c3aed;margin-bottom:4px}
+.pdf-title-text{font-size:17px;font-weight:700;color:#1a1a2e}
+.pdf-meta{font-size:11px;color:#6b7280;margin-top:2px}
+.pdf-section-title{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#7c3aed;margin:14px 0 8px;font-weight:600}
+.pdf-energy-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #f3f4f6;font-size:12px;color:#374151}
+.pdf-day{color:#9ca3af;width:38px;font-size:11px}
+.pdf-summary-box{background:#f9fafb;border-radius:8px;padding:12px;margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pdf-summary-item{font-size:11px;color:#6b7280}
+.pdf-summary-item strong{display:block;font-size:13px;color:#1a1a2e}
+
+/* PRICING */
+#pricing{padding:110px 0}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+.pricing-card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:30px;position:relative;transition:transform 0.3s,border-color 0.3s}
 .pricing-card:hover{transform:translateY(-4px)}
-.pricing-card.featured{background:rgba(124,58,237,0.1);border-color:rgba(124,58,237,0.4)}
-.pricing-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--purple);color:#fff;padding:4px 16px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap}
-.pricing-name{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
-.pricing-price{font-family:"DM Serif Display",serif;font-size:48px;letter-spacing:-2px;margin-bottom:4px}
-.pricing-price sup{font-size:20px;vertical-align:super;letter-spacing:0}
-.pricing-period{font-size:14px;color:var(--muted);margin-bottom:28px}
-.pricing-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-.pricing-features li{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted)}
-.check{color:var(--green)}
-.pricing-cta{display:block;text-align:center;padding:14px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.2s}
+.pricing-card.featured{background:rgba(124,58,237,0.08);border-color:rgba(124,58,237,0.35)}
+.pricing-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--purple);color:#fff;padding:4px 16px;border-radius:100px;font-size:11px;font-weight:600;white-space:nowrap;letter-spacing:0.5px}
+.pricing-name{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;font-weight:600}
+.pricing-price{font-family:"DM Serif Display",serif;font-size:44px;letter-spacing:-2px;margin-bottom:4px;line-height:1}
+.pricing-price sup{font-size:18px;vertical-align:super;letter-spacing:0}
+.pricing-period{font-size:13px;color:var(--muted);margin-bottom:24px}
+.pricing-features{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
+.pricing-features li{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--muted)}
+.check{color:var(--green);flex-shrink:0}
+.pricing-cta{display:block;text-align:center;padding:13px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s}
 .pricing-cta.primary{background:var(--purple);color:#fff}
-.pricing-cta.primary:hover{background:var(--purple-l)}
+.pricing-cta.primary:hover{opacity:0.88}
 .pricing-cta.ghost{border:1px solid var(--border);color:var(--muted)}
-.pricing-cta.ghost:hover{border-color:rgba(255,255,255,0.2);color:var(--text)}
-#cta{padding:120px 0;text-align:center;position:relative;overflow:hidden}
-#cta::before{content:"";position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,0.15) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
-#cta p{font-size:18px;color:var(--muted);max-width:480px;margin:0 auto 40px}
-footer{padding:40px 0;border-top:1px solid var(--border)}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.footer-links{display:flex;gap:24px}
-.footer-links a{font-size:14px;color:var(--muted);text-decoration:none;transition:color 0.2s}
-.footer-links a:hover{color:var(--text)}
-.footer-copy{font-size:14px;color:var(--muted)}
-.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
-.fade-up.visible{opacity:1;transform:translateY(0)}
-.inp{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-size:15px;outline:none;font-family:"DM Sans",sans-serif;transition:border-color 0.2s}
+.pricing-cta.ghost:hover{border-color:rgba(255,255,255,0.18);color:var(--text)}
+
+/* COACHES */
+#coaches{padding:100px 0;background:var(--surface)}
+.coaches-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.coaches-form-card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:34px}
+.coaches-form-card h3{font-size:18px;font-weight:600;margin-bottom:6px}
+.coaches-form-card p{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.6}
+.inp{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--text);font-size:14px;outline:none;font-family:"DM Sans",sans-serif;transition:border-color 0.2s;appearance:none}
 .inp:focus{border-color:rgba(124,58,237,0.5)}
+.inp-label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;font-weight:500}
+.inp-group{margin-bottom:14px}
+.submit-btn{width:100%;background:var(--purple);color:#fff;border:none;border-radius:10px;padding:14px;font-size:15px;font-weight:600;cursor:pointer;font-family:"DM Sans",sans-serif;transition:opacity 0.2s}
+.submit-btn:hover{opacity:0.88}
+.form-success{display:none;margin-top:14px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:12px;text-align:center;color:#10b981;font-size:13px}
+.form-error{display:none;margin-top:14px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:10px;padding:12px;text-align:center;color:#ef4444;font-size:13px}
+.coaches-meta{display:flex;flex-direction:column;gap:12px;margin-top:32px}
+.coaches-meta-item{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--muted);line-height:1.5}
+.coaches-meta-item::before{content:"✦";color:var(--purple-l);font-size:11px;margin-top:3px;flex-shrink:0}
+.response-badge{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-top:24px}
+.response-badge span:first-child{font-size:12px;color:var(--muted)}
+.response-badge strong{font-family:"DM Serif Display",serif;font-size:22px;color:var(--text)}
+
+/* DISCLAIMER */
+.disclaimer-block{display:flex;align-items:flex-start;gap:12px;padding:20px 24px;background:rgba(245,158,11,0.04);border:1px solid rgba(245,158,11,0.12);border-radius:12px;margin-top:40px}
+.disclaimer-icon{font-size:14px;color:var(--amber);flex-shrink:0;font-style:italic;font-weight:700;margin-top:2px}
+.disclaimer-block p{font-size:13px;color:var(--muted2);line-height:1.65;margin:0}
+
+/* CTA FINAL */
+#cta-final{padding:120px 0;text-align:center;position:relative;overflow:hidden}
+#cta-final::before{content:"";position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(124,58,237,0.12) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+#cta-final .container{position:relative;z-index:1}
+#cta-final h2{margin-bottom:14px}
+#cta-final p{font-size:16px;color:var(--muted);max-width:400px;margin:0 auto 36px;line-height:1.7}
+
+/* FOOTER */
+footer{padding:36px 0;border-top:1px solid var(--border)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:13px;color:var(--muted2)}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.55s ease,transform 0.55s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
 @media(max-width:900px){
-  nav{padding:16px 24px}
-  .container{padding:0 24px}
-  .hero-inner,.pdf-inner{grid-template-columns:1fr}
+  nav{padding:14px 20px}
+  .container{padding:0 20px}
+  .hero-inner,.pdf-inner,.why-inner,.coaches-inner{grid-template-columns:1fr}
   .hero-visual{display:none}
-  .problem-grid,.steps{grid-template-columns:1fr}
-  .step-connector{display:none}
-  .pricing-grid{grid-template-columns:1fr;max-width:400px;margin-left:auto;margin-right:auto}
-  #licenses-grid{grid-template-columns:1fr !important}
-  .case-study-grid { grid-template-columns: 1fr; gap: 32px; }
+  .steps,.who-grid,.pricing-grid{grid-template-columns:1fr}
+  .steps::before{display:none}
+  .pricing-grid{max-width:380px;margin-left:auto;margin-right:auto}
+  h1{font-size:38px}
+  h2{font-size:30px}
+  #how,#who,#why,#pdf-section,#pricing,#coaches,#cta-final{padding:72px 0}
 }
-.segment-chooser { margin-bottom: 28px; }
-.segment-question { font-size: 13px; color: var(--muted); margin-bottom: 10px; letter-spacing: 0.3px; }
-.segment-options { display: flex; gap: 8px; flex-wrap: wrap; }
-.seg-btn { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 7px 16px; border-radius: 100px; font-size: 13px; cursor: pointer; transition: all 0.2s; font-family: "DM Sans", sans-serif; }
-.seg-btn:hover { border-color: rgba(124,58,237,0.4); color: var(--text); }
-.seg-btn.active { background: rgba(124,58,237,0.15); border-color: rgba(124,58,237,0.4); color: var(--purple-l); }
-.segment-problems { margin-bottom: 80px; }
-.segment-how { margin-bottom: 80px; background: var(--surface); padding: 80px 0; border-radius: 20px; }
-.case-study-section { padding: 80px 0; border-top: 1px solid var(--border); margin-bottom: 0; }
-.case-study-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px; align-items: start; }
-.case-step { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
-.case-step-n { width: 32px; height: 32px; background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--purple-l); flex-shrink: 0; }
-.case-step p { font-size: 15px; color: var(--muted); line-height: 1.6; margin: 0; padding-top: 4px; }
-.case-result { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 32px; }
-.result-metric { font-family: "DM Serif Display", serif; font-size: 48px; letter-spacing: -2px; color: var(--purple-l); margin-bottom: 16px; }
-.quote-section { padding: 60px 0; border-top: 1px solid var(--border); }
-.contact-section { padding: 60px 0; border-top: 1px solid var(--border); }
-.contact-inner { background: rgba(124,58,237,0.08); border: 1px solid rgba(124,58,237,0.2); border-radius: 24px; padding: 48px; max-width: 640px; }
-.contact-inner h3 { font-family: "DM Serif Display", serif; font-size: 28px; margin-bottom: 16px; letter-spacing: -0.5px; }
-.contact-inner p { font-size: 16px; color: var(--muted); margin-bottom: 28px; line-height: 1.7; }
-.disclaimer-block { display: flex; align-items: flex-start; gap: 12px; padding: 24px; background: rgba(245,158,11,0.06); border-top: 1px solid rgba(245,158,11,0.15); border-bottom: 1px solid rgba(245,158,11,0.15); border-radius: 12px; margin-top: 40px; }
-.disclaimer-block .disclaimer-icon { font-size: 16px; color: var(--amber); flex-shrink: 0; font-style: italic; font-weight: 700; }
-.disclaimer-block p { font-size: 14px; color: var(--muted); line-height: 1.7; margin: 0; }
 </style>
 </head>
 <body>
+
 <nav>
-  <a href="#" class="logo">calmi <span>experiments</span></a>
-  <a href="https://calmi-experiments.lelekstudio.com/register" class="cta-small">Start free</a>
+  <a href="#" class="logo">calmi <em>experiments</em></a>
+  <a href="https://calmi-experiments.lelekstudio.com/register" class="nav-cta">Start free</a>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
   <div class="hero-glow"></div>
   <div class="container">
     <div class="hero-inner">
       <div class="fade-up">
-        <div class="segment-chooser">
-          <p class="segment-question">How do you want to use Calmi?</p>
-          <div class="segment-options">
-            <button class="seg-btn active" data-seg="personal">For myself</button>
-            <button class="seg-btn" data-seg="work">For work</button>
-            <button class="seg-btn" data-seg="therapy">With a coach / therapist</button>
+
+        <div class="seg-chooser">
+          <p class="seg-q">I want to track</p>
+          <div class="seg-options">
+            <button class="seg-btn active" data-seg="personal">My energy</button>
+            <button class="seg-btn" data-seg="art">My creative practice</button>
           </div>
         </div>
-        <div id="hero-label" class="hero-label"><span class="dot"></span> Built for neurodivergent minds</div>
+
+        <div id="hero-pill" class="hero-pill"><span class="dot"></span> Built for neurodivergent minds</div>
         <h1 id="hero-h1">Small experiments.<br><em>Real</em> self-knowledge.</h1>
-        <p id="hero-sub" class="hero-sub">Stop guessing what works for you. Run tiny experiments, track your energy, and discover patterns without pressure, without judgment.</p>
+        <p id="hero-sub" class="hero-sub">Stop guessing what works for you. Run a small experiment, check in daily, and discover patterns - without pressure, without judgment.</p>
         <div class="hero-actions">
           <a href="https://calmi-experiments.lelekstudio.com/register" class="btn-primary" id="hero-cta">Start your first experiment</a>
-          <a href="#content-section" class="btn-ghost">See how it works</a>
+          <a href="#how" class="btn-ghost">See how it works ↓</a>
         </div>
+
       </div>
-      <div class="hero-visual fade-up" style="animation-delay:0.2s">
+      <div class="hero-visual fade-up" style="transition-delay:0.15s">
         <div class="phone-mockup">
           <div class="mock-topbar">
             <div class="mock-back">&#8592;</div>
@@ -222,22 +310,20 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
             <div class="mock-pdf-icon">&#9633;</div>
           </div>
           <div class="mock-content">
-            <div class="mock-exp-title">Morning walks</div>
+            <div class="mock-exp-title" id="mock-title">Morning walks before work</div>
             <div class="mock-meta-row">
               <span class="mock-badge-active">Active</span>
-              <span class="mock-badge-cat">Personal Development</span>
-              <span class="mock-badge-cat">Mar 18, 2026</span>
+              <span class="mock-badge-cat" id="mock-cat">Personal Development</span>
             </div>
-            <div class="mock-exp-desc">What happens when I walk outside before work every day?</div>
-            <div class="mock-day-card">
-              <span class="mock-day-icon">&#9728;</span>
-              <div>
-                <div class="mock-day-label">Day 4 of your experiment</div>
-                <div class="mock-day-sub">7 days planned</div>
+            <div class="mock-progress-card">
+              <div class="mock-progress-top">
+                <span class="mock-progress-label">Day 4 of 7</span>
+                <span class="mock-progress-pct">57%</span>
               </div>
+              <div class="mock-progress-track"><div class="mock-progress-fill"></div></div>
             </div>
             <div class="mock-section-header">
-              <span class="mock-section-title">Capacity Notes</span>
+              <span class="mock-section-title" id="mock-notes-label">Energy Notes</span>
               <span class="mock-section-count">3</span>
             </div>
             <div class="mock-note">
@@ -245,21 +331,21 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
                 <div><div class="mock-note-day">Day 1</div><div class="mock-note-date">Mar 18 at 8:42 AM</div></div>
                 <span class="mock-badge-high">High</span>
               </div>
-              <div class="mock-note-text">Felt focused and clear all morning. Best start in weeks.</div>
+              <div class="mock-note-text" id="mock-note1">Felt focused and clear all morning.</div>
             </div>
             <div class="mock-note">
               <div class="mock-note-header">
                 <div><div class="mock-note-day">Day 2</div><div class="mock-note-date">Mar 19 at 8:55 AM</div></div>
                 <span class="mock-badge-medium">Medium</span>
               </div>
-              <div class="mock-note-text">Distracted but still better than usual.</div>
+              <div class="mock-note-text" id="mock-note2">Distracted but still better than usual.</div>
             </div>
             <div class="mock-note">
               <div class="mock-note-header">
                 <div><div class="mock-note-day">Day 3</div><div class="mock-note-date">Mar 20 at 9:11 PM</div></div>
                 <span class="mock-badge-low">Low</span>
               </div>
-              <div class="mock-note-text">Skipped the walk. Energy dropped. Correlation confirmed.</div>
+              <div class="mock-note-text" id="mock-note3">Skipped the walk. Energy dropped.</div>
             </div>
           </div>
           <div class="mock-actions">
@@ -273,38 +359,128 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
   </div>
 </section>
 
+<!-- TRUST BAR -->
 <section class="trust-bar">
   <div class="container">
     <div class="trust-inner">
       <div class="trust-item">&#128274; GDPR compliant</div>
-      <div class="trust-item">&#129504; Designed for ADHD &amp; neurodiversity</div>
+      <div class="trust-item">&#129504; Built for ADHD &amp; neurodiversity</div>
       <div class="trust-item">&#128156; No judgment, no streaks</div>
-      <div class="trust-item">&#128196; PDF reports for coaches</div>
       <div class="trust-item">&#10022; Free to start</div>
     </div>
   </div>
 </section>
 
-<section id="content-section">
-  <div class="container" id="dynamic-content"></div>
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">How it works</div>
+      <h2>Three steps.<br><em>One experiment at a time.</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-n">1</div>
+        <h3>Ask a question</h3>
+        <p>Turn any idea into an experiment. "What happens if I walk 20 minutes before work?" Save ideas to your Parking lot and start when you're ready.</p>
+      </div>
+      <div class="step fade-up" style="transition-delay:0.1s">
+        <div class="step-n">2</div>
+        <h3>Check in daily</h3>
+        <p>Rate your energy Low, Medium, or High. Add a quick note if something stands out. Under 2 minutes. No streaks. No shame if you miss a day.</p>
+      </div>
+      <div class="step fade-up" style="transition-delay:0.2s">
+        <div class="step-n">3</div>
+        <h3>Discover what works</h3>
+        <p>At the end of the experiment, see your patterns. What gave you energy? What drained you? Now you have data - not just a feeling.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- WHO IT'S FOR -->
+<section id="who">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">Who it's for</div>
+      <h2>One tool.<br><em>Two kinds of practice.</em></h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card personal fade-up" style="transition-delay:0.05s">
+        <div class="who-icon">🧠</div>
+        <h3>Personal energy tracking</h3>
+        <p>You have ideas but lose momentum. Goals feel like pressure. You know something isn't working but can't explain why. Calmi helps you run small experiments and find patterns - without the shame spiral.</p>
+        <p style="margin-top:12px;font-size:14px;color:var(--muted)">Best for: ADHD, neurodivergent minds, burnout recovery, anyone who's tired of habit trackers that make them feel bad.</p>
+        <span class="who-tag">My energy</span>
+      </div>
+      <div class="who-card art fade-up" style="transition-delay:0.1s">
+        <div class="who-icon">🎨</div>
+        <h3>Creative practice tracking</h3>
+        <p>You want to understand your creative flow - when it's there, what blocks it, what actually helps. Not with productivity rules. With curiosity. An experiment instead of a goal.</p>
+        <p style="margin-top:12px;font-size:14px;color:var(--muted)">Best for: Artists, designers, writers, musicians - anyone whose work depends on being able to access their creative energy.</p>
+        <span class="who-tag">My creative practice</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY EXPERIMENTS -->
+<section id="why">
+  <div class="container">
+    <div class="why-inner">
+      <div class="fade-up">
+        <div class="section-label">The philosophy</div>
+        <h2>Goals create shame.<br><em>Experiments create data.</em></h2>
+        <p class="section-sub">When you miss a goal, you failed. When an experiment gives unexpected results - you learned something. Same behavior. Completely different relationship with yourself.</p>
+        <div class="quote-block" style="margin-top:36px">
+          <p id="why-quote">"I've tried every habit app. They all made me feel bad about myself. Calmi is the first thing that actually gives me data without judgment."</p>
+          <div class="quote-author" id="why-author">Adult with ADHD, beta user</div>
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay:0.1s">
+        <div class="contrast-header">
+          <div>Setting a goal</div>
+          <div>Running an experiment</div>
+        </div>
+        <div class="contrast-table">
+          <div class="contrast-row">
+            <div class="contrast-cell bad">I will walk every day for 30 days</div>
+            <div class="contrast-cell good">What happens if I walk before work this week?</div>
+          </div>
+          <div class="contrast-row">
+            <div class="contrast-cell bad">Missed day 4. Failed again.</div>
+            <div class="contrast-cell good">Skipped day 4. Energy was lower. Interesting.</div>
+          </div>
+          <div class="contrast-row">
+            <div class="contrast-cell bad">I need more willpower</div>
+            <div class="contrast-cell good">Walking correlates with higher energy 5/7 days</div>
+          </div>
+          <div class="contrast-row">
+            <div class="contrast-cell bad">I'll try again next month</div>
+            <div class="contrast-cell good">Ready to run the next experiment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PDF SECTION -->
 <section id="pdf-section">
   <div class="container">
     <div class="pdf-inner">
       <div class="fade-up">
         <div class="section-label">Session reports</div>
-        <h2>A PDF your<br><em>coach will love.</em></h2>
-        <p class="section-sub" style="margin-bottom:32px">After each experiment, generate a structured report. Energy patterns, daily observations, and a reflection ready to bring to your next session.</p>
+        <h2>Arrive at your session<br><em>with actual data.</em></h2>
+        <p class="section-sub" style="margin-bottom:28px">After each experiment, generate a PDF report. Bring it to your coach or therapist - or keep it for yourself. Skip the recap. Go straight to insight.</p>
         <ul class="feature-list">
-          <li>Energy pattern visualization day-by-day</li>
-          <li>Full daily observations with notes</li>
-          <li>Personal reflection section</li>
-          <li>Session summary stats for coach</li>
-          <li>Generated in seconds, download instantly</li>
+          <li>Energy pattern day-by-day</li>
+          <li>Your notes and observations</li>
+          <li>Reflection and what you discovered</li>
+          <li>Summary stats at a glance</li>
         </ul>
       </div>
-      <div class="fade-up" style="transition-delay:0.2s">
+      <div class="fade-up" style="transition-delay:0.15s">
         <div class="pdf-preview">
           <div class="pdf-header">
             <div class="pdf-brand">CALMI EXPERIMENTS - Experiment Report</div>
@@ -312,12 +488,12 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
             <div class="pdf-meta">Personal Development - Completed - 7 days</div>
           </div>
           <div class="pdf-section-title">Energy Pattern</div>
-          <div class="pdf-energy-row"><span class="pdf-day">Day 1</span><span>&#9679;&#9679;&#9679;</span><span style="color:#10b981;font-size:12px;font-weight:600;margin-left:6px">HIGH</span></div>
-          <div class="pdf-energy-row"><span class="pdf-day">Day 2</span><span>&#9679;&#9679;&#9675;</span><span style="color:#f59e0b;font-size:12px;font-weight:600;margin-left:6px">MEDIUM</span></div>
-          <div class="pdf-energy-row"><span class="pdf-day">Day 3</span><span>&#9679;&#9679;&#9679;</span><span style="color:#10b981;font-size:12px;font-weight:600;margin-left:6px">HIGH</span></div>
-          <div class="pdf-energy-row"><span class="pdf-day">Day 4</span><span>&#9679;&#9675;&#9675;</span><span style="color:#ef4444;font-size:12px;font-weight:600;margin-left:6px">LOW</span></div>
+          <div class="pdf-energy-row"><span class="pdf-day">Day 1</span><span>&#9679;&#9679;&#9679;</span><span style="color:#10b981;font-size:11px;font-weight:600;margin-left:6px">HIGH</span></div>
+          <div class="pdf-energy-row"><span class="pdf-day">Day 2</span><span>&#9679;&#9679;&#9675;</span><span style="color:#f59e0b;font-size:11px;font-weight:600;margin-left:6px">MEDIUM</span></div>
+          <div class="pdf-energy-row"><span class="pdf-day">Day 3</span><span>&#9679;&#9679;&#9679;</span><span style="color:#10b981;font-size:11px;font-weight:600;margin-left:6px">HIGH</span></div>
+          <div class="pdf-energy-row"><span class="pdf-day">Day 4</span><span>&#9679;&#9675;&#9675;</span><span style="color:#ef4444;font-size:11px;font-weight:600;margin-left:6px">LOW</span></div>
           <div class="pdf-section-title">What I Discovered</div>
-          <div style="font-size:13px;color:#374151;font-style:italic;line-height:1.5;margin-bottom:12px">"Walking in the morning significantly improves my focus. Low energy on day 4 was due to poor sleep."</div>
+          <div style="font-size:12px;color:#374151;font-style:italic;line-height:1.5;margin-bottom:12px">"Walking before work consistently improved my focus. Day 4 without the walk - energy dropped immediately."</div>
           <div class="pdf-summary-box">
             <div class="pdf-summary-item"><strong>7 days</strong>Total active</div>
             <div class="pdf-summary-item"><strong>6 check-ins</strong>Completed</div>
@@ -330,59 +506,47 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
   </div>
 </section>
 
+<!-- PRICING -->
 <section id="pricing">
   <div class="container">
     <div class="fade-up" style="text-align:center">
       <div class="section-label">Pricing</div>
       <h2>Start free.<br><em>Upgrade</em> when ready.</h2>
-      <p class="section-sub" style="margin:0 auto">No credit card required. All premium plans include the same features. You choose how long.</p>
-    </div>
-    <div class="fade-up" style="max-width:560px;margin:48px auto 60px;background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden">
-      <div style="padding:18px 24px;border-bottom:1px solid var(--border)">
-        <div style="font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--purple-l);font-weight:600;margin-bottom:4px">Premium features</div>
-        <div style="font-size:14px;color:var(--muted)">Everything included in all paid plans</div>
-      </div>
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid var(--border)"><div style="display:flex;align-items:center;gap:12px"><span>&#127912;</span><span style="font-size:14px;color:var(--text)">Custom categories and colors</span></div><span style="color:#10b981;font-weight:600">&#10003;</span></div>
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid var(--border)"><div style="display:flex;align-items:center;gap:12px"><span>&#128202;</span><span style="font-size:14px;color:var(--text)">Statistics and analytics</span></div><span style="color:#10b981;font-weight:600">&#10003;</span></div>
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid var(--border)"><div style="display:flex;align-items:center;gap:12px"><span>&#128444;</span><span style="font-size:14px;color:var(--text)">Image attachments in notes</span></div><span style="color:#10b981;font-weight:600">&#10003;</span></div>
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 24px"><div style="display:flex;align-items:center;gap:12px"><span>&#128196;</span><span style="font-size:14px;color:var(--text)">Export to PDF</span></div><span style="color:#10b981;font-weight:600">&#10003;</span></div>
+      <p class="section-sub" style="margin:0 auto;text-align:center">No credit card required. All paid plans include every feature - you choose how long.</p>
     </div>
     <div class="pricing-grid">
       <div class="pricing-card fade-up">
         <div class="pricing-name">Monthly</div>
-        <div class="pricing-price"><sup>$</sup>2<span style="font-size:24px">.99</span></div>
+        <div class="pricing-price"><sup>$</sup>2<span style="font-size:22px">.99</span></div>
         <div class="pricing-period">per month, cancel anytime</div>
         <ul class="pricing-features">
-          <li><span class="check">&#10003;</span> All premium features</li>
           <li><span class="check">&#10003;</span> Unlimited experiments</li>
           <li><span class="check">&#10003;</span> Full history and statistics</li>
           <li><span class="check">&#10003;</span> PDF session reports</li>
-          <li><span class="check">&#10003;</span> Cancel anytime</li>
+          <li><span class="check">&#10003;</span> Custom categories</li>
+          <li><span class="check">&#10003;</span> Image attachments</li>
         </ul>
         <a href="https://calmi-experiments.lelekstudio.com/register" class="pricing-cta ghost">Start monthly</a>
       </div>
       <div class="pricing-card featured fade-up" style="transition-delay:0.1s">
         <div class="pricing-badge">POPULAR</div>
         <div class="pricing-name">Yearly</div>
-        <div class="pricing-price"><sup>$</sup>19<span style="font-size:24px">.99</span></div>
-        <div class="pricing-period">per year, <strong style="color:var(--green)">save 44%</strong></div>
-        <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:10px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:#10b981">Save 44% - Best value!</div>
+        <div class="pricing-price"><sup>$</sup>19<span style="font-size:22px">.99</span></div>
+        <div class="pricing-period">per year - <strong style="color:var(--green)">save 44%</strong></div>
         <ul class="pricing-features">
-          <li><span class="check">&#10003;</span> All premium features</li>
-          <li><span class="check">&#10003;</span> Unlimited experiments</li>
-          <li><span class="check">&#10003;</span> Full history and statistics</li>
-          <li><span class="check">&#10003;</span> PDF session reports</li>
+          <li><span class="check">&#10003;</span> Everything in monthly</li>
+          <li><span class="check">&#10003;</span> Save $16 vs monthly</li>
           <li><span class="check">&#10003;</span> Priority support</li>
+          <li><span class="check">&#10003;</span> Best value for regular use</li>
         </ul>
-        <a href="https://calmi-experiments.lelekstudio.com/register" class="pricing-cta primary" data-cta="pricing">Start yearly plan</a>
+        <a href="https://calmi-experiments.lelekstudio.com/register" class="pricing-cta primary">Start yearly plan</a>
       </div>
       <div class="pricing-card fade-up" style="transition-delay:0.2s">
         <div class="pricing-name">Lifetime</div>
-        <div class="pricing-price"><sup>$</sup>39<span style="font-size:24px">.99</span></div>
-        <div class="pricing-period">one-time, pay once own forever</div>
+        <div class="pricing-price"><sup>$</sup>39<span style="font-size:22px">.99</span></div>
+        <div class="pricing-period">one-time, yours forever</div>
         <ul class="pricing-features">
-          <li><span class="check">&#10003;</span> All premium features</li>
-          <li><span class="check">&#10003;</span> Unlimited experiments</li>
+          <li><span class="check">&#10003;</span> Everything, always</li>
           <li><span class="check">&#10003;</span> All future features included</li>
           <li><span class="check">&#10003;</span> No recurring fees ever</li>
           <li><span class="check">&#10003;</span> Early adopter price</li>
@@ -390,44 +554,44 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
         <a href="https://calmi-experiments.lelekstudio.com/register" class="pricing-cta ghost">Get lifetime access</a>
       </div>
     </div>
-    <p class="fade-up" style="text-align:center;margin-top:24px;font-size:13px;color:var(--muted)">All plans start with a free account. No credit card required.</p>
+    <p class="fade-up" style="text-align:center;margin-top:20px;font-size:13px;color:var(--muted)">Free account includes 1 active experiment. No credit card required.</p>
   </div>
 </section>
 
-<section id="contact" style="padding:120px 0;background:var(--surface)">
+<!-- COACHES -->
+<section id="coaches">
   <div class="container">
-    <div id="licenses-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+    <div class="coaches-inner">
       <div class="fade-up">
         <div class="section-label">For professionals</div>
-        <h2>Need licenses<br>for your <em>clients?</em></h2>
-        <p class="section-sub" style="margin-bottom:32px">If you are a coach or therapist looking to give your clients access to Calmi Experiments, get in touch. We will set you up with promotion codes or a bulk access plan that fits your practice.</p>
-        <ul class="feature-list" style="margin-bottom:32px">
-          <li>Custom promotion codes for your clients</li>
-          <li>Bulk access at reduced rates</li>
-          <li>PDF reports included for all client accounts</li>
-          <li>No technical setup required on your end</li>
-          <li>Personal onboarding support</li>
-        </ul>
-        <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:20px">
-          <div style="font-size:13px;color:var(--muted);margin-bottom:8px">We typically respond within</div>
-          <div style="font-size:22px;font-family:DM Serif Display,serif;color:var(--text)">24 hours</div>
+        <h2>Using this<br>with <em>clients?</em></h2>
+        <p class="section-sub">If you're a coach or therapist, your clients can run structured experiments between sessions and arrive with real data. Get in touch for access codes and group rates.</p>
+        <div class="coaches-meta">
+          <div class="coaches-meta-item">Access codes for your clients</div>
+          <div class="coaches-meta-item">Reduced rates for bulk access</div>
+          <div class="coaches-meta-item">PDF reports included for all accounts</div>
+          <div class="coaches-meta-item">No technical setup on your end</div>
+        </div>
+        <div class="response-badge">
+          <span>We typically respond within</span>
+          <strong>24 hours</strong>
         </div>
       </div>
-      <div class="fade-up" style="transition-delay:0.2s">
-        <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:24px;padding:36px">
-          <h3 style="font-size:20px;font-weight:600;margin-bottom:8px">Get in touch</h3>
-          <p style="font-size:14px;color:var(--muted);margin-bottom:28px">Tell us about your practice and how many clients you would like to onboard.</p>
+      <div class="fade-up" style="transition-delay:0.15s">
+        <div class="coaches-form-card">
+          <h3>Get in touch</h3>
+          <p>Tell us about your practice and how many clients you'd like to onboard.</p>
           <form id="cf" onsubmit="sf(event)">
-            <div style="margin-bottom:16px">
-              <label style="display:block;font-size:13px;color:var(--muted);margin-bottom:6px">Your name</label>
+            <div class="inp-group">
+              <label class="inp-label">Your name</label>
               <input type="text" id="fn" required placeholder="Jane Smith" class="inp"/>
             </div>
-            <div style="margin-bottom:16px">
-              <label style="display:block;font-size:13px;color:var(--muted);margin-bottom:6px">Your email</label>
+            <div class="inp-group">
+              <label class="inp-label">Your email</label>
               <input type="email" id="fe" required placeholder="jane@yourpractice.com" class="inp"/>
             </div>
-            <div style="margin-bottom:16px">
-              <label style="display:block;font-size:13px;color:var(--muted);margin-bottom:6px">I am a...</label>
+            <div class="inp-group">
+              <label class="inp-label">I am a...</label>
               <select id="fr" required class="inp" style="cursor:pointer">
                 <option value="" disabled selected>Select your role</option>
                 <option value="Coach">Coach</option>
@@ -435,38 +599,44 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
                 <option value="Other professional">Other professional</option>
               </select>
             </div>
-            <div style="margin-bottom:16px">
-              <label style="display:block;font-size:13px;color:var(--muted);margin-bottom:6px">Number of clients</label>
+            <div class="inp-group">
+              <label class="inp-label">Number of clients</label>
               <select id="fc" required class="inp" style="cursor:pointer">
-                <option value="" disabled selected>How many clients?</option>
+                <option value="" disabled selected>Roughly how many?</option>
                 <option value="1-5">1-5 clients</option>
                 <option value="6-15">6-15 clients</option>
                 <option value="16-30">16-30 clients</option>
                 <option value="30+">30+ clients</option>
               </select>
             </div>
-            <div style="margin-bottom:24px">
-              <label style="display:block;font-size:13px;color:var(--muted);margin-bottom:6px">Message (optional)</label>
+            <div class="inp-group" style="margin-bottom:20px">
+              <label class="inp-label">Message (optional)</label>
               <textarea id="fm" rows="3" placeholder="Tell us about your practice..." class="inp" style="resize:vertical"></textarea>
             </div>
-            <button type="submit" style="width:100%;background:var(--purple);color:#fff;border:none;border-radius:12px;padding:16px;font-size:16px;font-weight:600;cursor:pointer;font-family:DM Sans,sans-serif">Send message</button>
-            <div id="fs" style="display:none;margin-top:16px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:14px;text-align:center;color:#10b981;font-size:14px">Message sent! We will get back to you within 24 hours.</div>
-            <div id="fer" style="display:none;margin-top:16px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:14px;text-align:center;color:#ef4444;font-size:14px">Something went wrong. Email us: <a href="mailto:lelekstudio@lelekstudio.com">lelekstudio@lelekstudio.com</a></div>
+            <button type="submit" class="submit-btn">Send message</button>
+            <div id="fs" class="form-success">Message sent. We'll be in touch within 24 hours.</div>
+            <div id="fer" class="form-error">Something went wrong. Email us: <a href="mailto:lelekstudio@lelekstudio.com" style="color:inherit">lelekstudio@lelekstudio.com</a></div>
           </form>
         </div>
       </div>
     </div>
+
+    <div class="disclaimer-block fade-up" style="margin-top:60px">
+      <span class="disclaimer-icon">i</span>
+      <p>Calmi Experiments is a self-tracking tool, not a medical product. It does not replace therapy, psychiatric care, or professional mental health support. If you are experiencing distress, please contact a qualified specialist.</p>
+    </div>
   </div>
 </section>
 
-<section id="cta">
+<!-- FINAL CTA -->
+<section id="cta-final">
   <div class="container">
     <div class="fade-up">
       <div class="section-label" style="text-align:center">Ready?</div>
       <h2 style="text-align:center">Start with<br><em>one question.</em></h2>
-      <p>What happens if you try something small for the next 7 days? Add it now, even if it is not perfect yet.</p>
+      <p>What happens if you try something small for the next 7 days?</p>
       <div style="display:flex;justify-content:center">
-        <a href="https://calmi-experiments.lelekstudio.com/register" class="btn-primary">Start your first experiment, it is free</a>
+        <a href="https://calmi-experiments.lelekstudio.com/register" class="btn-primary">Start your first experiment - it's free</a>
       </div>
     </div>
   </div>
@@ -475,7 +645,7 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
 <footer>
   <div class="container">
     <div class="footer-inner">
-      <a href="#" class="logo">calmi <span>experiments</span></a>
+      <a href="#" class="logo">calmi <em>experiments</em></a>
       <div class="footer-links">
         <a href="/impressum.html">Impressum</a>
         <a href="/privacy.html">Privacy Policy</a>
@@ -486,306 +656,118 @@ footer{padding:40px 0;border-top:1px solid var(--border)}
     </div>
   </div>
 </footer>
+
 <script>
-var obs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target);}
+// Scroll reveal
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
   });
-},{threshold:0.1});
-document.querySelectorAll(".fade-up").forEach(function(el){obs.observe(el);});
-var segInitialized=false;
-async function sf(e){
-  e.preventDefault();
-  var btn=e.target.querySelector("button[type=\"submit\"]");
-  if(btn){btn.disabled=true;btn.textContent="Sending...";}
-  var n=document.getElementById("fn").value.trim();
-  var em=document.getElementById("fe").value.trim();
-  var r=document.getElementById("fr").value;
-  var c=document.getElementById("fc").value;
-  var m=document.getElementById("fm").value.trim();
-  try{
-    var res=await fetch("/api/contact",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({name:n,email:em,role:r,clients:c,message:m})
-    });
-    if(res.ok){
-      document.getElementById("fs").style.display="block";
-      document.getElementById("fer").style.display="none";
-      document.getElementById("cf").reset();
-    } else {
-      document.getElementById("fer").style.display="block";
-      document.getElementById("fs").style.display="none";
-    }
-  }catch(err){
-    document.getElementById("fer").style.display="block";
-    document.getElementById("fs").style.display="none";
-  }
-  if(btn){btn.disabled=false;btn.textContent="Send message →";}
-}
-const HERO_COPY = {
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-up').forEach(function(el) { obs.observe(el); });
+
+// Segment copy
+var COPY = {
   personal: {
-    label: '✦ Built for neurodivergent minds',
+    pill: '✦ Built for neurodivergent minds',
     h1: 'Small experiments.<br><em>Real</em> self-knowledge.',
-    sub: 'Stop guessing what works for you. Run tiny experiments, track your energy, and discover patterns - without pressure, without judgment.',
+    sub: 'Stop guessing what works for you. Run a small experiment, check in daily, and discover patterns - without pressure, without judgment.',
     cta: 'Start your first experiment',
-    pricingCta: 'Start free',
+    mockTitle: 'Morning walks before work',
+    mockCat: 'Personal Development',
+    mockNotesLabel: 'Energy Notes',
+    mockNote1: 'Felt focused and clear all morning.',
+    mockNote2: 'Distracted but still better than usual.',
+    mockNote3: 'Skipped the walk. Energy dropped.',
+    quote: '"I\'ve tried every habit app. They all made me feel bad about myself. Calmi is the first thing that gives me data without judgment."',
+    quoteAuthor: 'Adult with ADHD, beta user',
   },
-  work: {
-    label: '✦ Built for people inside broken processes',
-    h1: 'Measure what your work<br><em>actually</em> costs you.',
-    sub: 'Not hours. Capacity. Find where the friction is, track what drains you, and fix the right thing - with real data.',
-    cta: 'Measure your first process',
-    pricingCta: 'Start free - measure your first process',
-  },
-  therapy: {
-    label: '✦ For coaches and therapists',
-    h1: 'Behavioral homework<br>clients <em>actually</em> complete.',
-    sub: 'Your clients run structured experiments between sessions and arrive with real data - not just feelings. Skip the recap, go straight to insight.',
-    cta: 'Try it with your next client',
-    pricingCta: 'Start free - try with your next client',
+  art: {
+    pill: '✦ For artists and creative practitioners',
+    h1: 'Track your creative energy.<br><em>Without judgment.</em>',
+    sub: 'Run small experiments in your practice. Understand when creativity flows, what blocks it, and what actually helps - with real data, not guesswork.',
+    cta: 'Start your first experiment',
+    mockTitle: '30 min of practice daily',
+    mockCat: 'Creative Practice',
+    mockNotesLabel: 'Creative Energy Notes',
+    mockNote1: 'Best session in weeks. No distractions.',
+    mockNote2: 'Showed up but nothing came. Forced.',
+    mockNote3: 'Skipped. Felt the difference immediately.',
+    quote: '"The experiment framing removes the pressure to perform. I started noticing patterns in my creative energy I had never seen before."',
+    quoteAuthor: 'Visual artist, beta user',
   },
 };
 
-const SEGMENT_CONTENT = {
-
-personal: {
-  problems: [
-    { icon: '🌊', title: 'Too many ideas, no clarity',
-      text: 'You start things with energy, lose momentum after 3 days, and never find out if the idea was actually good.' },
-    { icon: '📊', title: 'Goals feel like pressure',
-      text: 'Traditional habit trackers punish you for missing a day. For a neurodivergent brain, that is a recipe for shame.' },
-    { icon: '🔄', title: 'No data, just feelings',
-      text: 'You know something is not working, but you cannot explain why. You need patterns, not willpower.' },
-  ],
-  steps: [
-    { n: '1', title: 'Ask a question',
-      text: 'Turn any idea into an experiment. What happens if I wake up 30 min earlier? Save ideas to Parking and start when ready.' },
-    { n: '2', title: 'Check in daily',
-      text: 'Rate your energy Low / Medium / High and add a quick note. No streaks. No judgment if you miss a day.' },
-    { n: '3', title: 'Discover what works',
-      text: 'After the experiment, reflect on what you found. See patterns in your energy. Build actual knowledge about yourself.' },
-  ],
-  quote: {
-    text: 'I have tried every habit app. They all made me feel bad about myself. Calmi Experiments is the first thing that actually gives me data without judgment.',
-    author: 'Adult with ADHD, beta user',
-  },
-  caseStudy: {
-    label: 'Real use case',
-    title: 'Morning walks experiment',
-    scenario: 'A user with ADHD wanted to know if morning walks actually helped their focus - or if it was just something people said.',
-    steps: [
-      'Created experiment: "What happens if I walk 20 min before starting work?"',
-      'Logged energy Low/Medium/High each morning for 7 days',
-      'Added notes on days that felt different',
-      'After 7 days: reflected on the pattern',
-    ],
-    result: 'On 5 out of 7 days with a walk, energy at T1 was Medium or High. On days without - Low. First time they had actual data, not just a feeling.',
-    metric: '5/7 days higher energy',
-  },
-  disclaimer: 'Calmi Experiments is a self-tracking tool, not a medical product. It does not replace therapy, psychiatric care, or professional mental health support. If you are experiencing distress, please contact a qualified specialist.',
-},
-
-work: {
-  problems: [
-    { icon: '⚡', title: 'You have time, but no capacity',
-      text: 'The calendar says 8 hours. Your brain delivers 3. Traditional tools measure hours worked - not what those hours actually cost you.' },
-    { icon: '🔍', title: 'You fix the wrong things',
-      text: 'You optimize the visible process. The real drain is invisible - decision fatigue, context switching, unclear inputs.' },
-    { icon: '📉', title: 'Burnout creeps in unnoticed',
-      text: 'There is no alarm when your capacity drops. By the time you feel it, you are already running on empty.' },
-  ],
-  steps: [
-    { n: '1', title: 'Name the process',
-      text: 'Pick one workflow that feels heavier than it should. Weekly reporting, client onboarding, content creation.' },
-    { n: '2', title: 'Track your capacity',
-      text: 'Log your energy before, during, and after the task. One tap. See exactly where the drain happens.' },
-    { n: '3', title: 'Find the bottleneck',
-      text: 'After a week you have data. Not a feeling - data. See which step costs the most and fix that one thing.' },
-  ],
-  quote: {
-    text: 'I always thought I was just bad at deep work. Turns out one specific meeting type was draining 60 percent of my weekly capacity. I moved it and everything changed.',
-    author: 'Startup founder, beta user',
-  },
-  caseStudy: {
-    label: 'Real use case',
-    title: 'Weekly reporting bottleneck',
-    scenario: 'An early-stage startup team noticed every Friday was a write-off. Nobody could explain why reporting took so long or felt so draining.',
-    steps: [
-      'Named the experiment: "Measure capacity cost of weekly report"',
-      'Each team member logged capacity at T0, T1, T2, T3 during the process',
-      'Added friction notes: what slowed them down at each step',
-      'After 2 weeks: compared capacity drops across the team',
-    ],
-    result: 'The data showed a 40% capacity drop at step T2 - the moment they had to pull data from three different tools. One integration removed that step entirely.',
-    metric: '40% capacity recovered',
-  },
-  contact: {
-    title: 'Need licenses for your team?',
-    text: 'If your startup or team wants to run capacity experiments together, get in touch. We can set up access codes for your whole team.',
-    cta: 'Contact us',
-  },
-  disclaimer: null,
-},
-
-therapy: {
-  problems: [
-    { icon: '🧠', title: 'Memory is unreliable',
-      text: 'Your client arrives and says it was a hard week. But which moment? What triggered it? Two days later the details are gone.' },
-    { icon: '📋', title: 'Homework rarely gets done',
-      text: 'You assign a reflection exercise. Next session: they forgot, or did it once, or cannot remember what they noticed.' },
-    { icon: '🔗', title: 'Sessions start from scratch',
-      text: '20 minutes to recap the week before you can do real work. Every session. That is time neither of you can afford.' },
-  ],
-  steps: [
-    { n: '1', title: 'Assign an experiment',
-      text: 'You design the question. Your client runs it in the app between sessions - tracking energy and observations each day.' },
-    { n: '2', title: 'Client logs in real time',
-      text: 'Thoughts captured when they happen, not reconstructed from memory. Under 2 minutes per check-in.' },
-    { n: '3', title: 'Arrive with data',
-      text: 'Your client brings a PDF report to the session. Skip the recap. Start with the pattern that actually needs attention.' },
-  ],
-  quote: {
-    text: 'The experiment framing removes the I failed narrative. Clients engage with curiosity instead of shame - and they actually complete the homework.',
-    author: 'Psychotherapist, beta user',
-  },
-  caseStudy: {
-    label: 'Real use case',
-    title: 'Behavioral activation between sessions',
-    scenario: 'A therapist working with clients on burnout wanted structured data between sessions - not just subjective recall.',
-    steps: [
-      'Assigned experiment: "Track your energy before and after your top 3 daily activities"',
-      'Client logged capacity for 10 days using Low/Medium/High',
-      'Added real-time notes on what triggered drops',
-      'Brought PDF report to next session',
-    ],
-    result: 'The data showed the client\'s capacity consistently dropped after video calls, not after deep work as they assumed. Reframing the problem changed the entire therapeutic direction.',
-    metric: 'Session time on insight: +60%',
-  },
-  contact: {
-    title: 'Using this with multiple clients?',
-    text: 'If you are a coach or therapist and want to use Calmi Experiments with several clients, we can provide access codes and a discount.',
-    cta: 'Get in touch',
-  },
-  disclaimer: 'Calmi Experiments is a self-tracking tool, not a medical product. It does not replace therapy, psychiatric care, or professional mental health support. If you are experiencing distress, please contact a qualified specialist.',
-},
-
-};
-
-function renderSegment(seg) {
-  const s = SEGMENT_CONTENT[seg];
-  if (!s) return;
-  const dc = document.getElementById('dynamic-content');
-  if (!dc) return;
-
-  const problemsHTML = s.problems.map(p => `
-    <div class="problem-card">
-      <div class="problem-icon">${p.icon}</div>
-      <h3>${p.title}</h3>
-      <p>${p.text}</p>
-    </div>`).join('');
-
-  const stepsHTML = s.steps.map((st, i) => `
-    <div class="step">
-      <div class="step-number">${st.n}</div>
-      <h3>${st.title}</h3>
-      <p>${st.text}</p>
-      ${i < 2 ? '<div class="step-connector">→</div>' : ''}
-    </div>`).join('');
-
-  const caseStudyHTML = s.caseStudy ? `
-    <div class="case-study-section">
-      <div class="section-label">${s.caseStudy.label}</div>
-      <h2>${s.caseStudy.title}</h2>
-      <p class="section-sub">${s.caseStudy.scenario}</p>
-      <div class="case-study-grid">
-        <div class="case-steps">
-          ${s.caseStudy.steps.map((step, i) => `
-            <div class="case-step">
-              <div class="case-step-n">${i + 1}</div>
-              <p>${step}</p>
-            </div>`).join('')}
-        </div>
-        <div class="case-result">
-          <div class="result-metric">${s.caseStudy.metric}</div>
-          <p>${s.caseStudy.result}</p>
-        </div>
-      </div>
-    </div>` : '';
-
-  const quoteHTML = s.quote ? `
-    <div class="quote-section">
-      <div class="quote-card">
-        <p>${s.quote.text}</p>
-        <div class="quote-author">${s.quote.author}</div>
-      </div>
-    </div>` : '';
-
-  const contactHTML = s.contact ? `
-    <div class="contact-section">
-      <div class="contact-inner">
-        <h3>${s.contact.title}</h3>
-        <p>${s.contact.text}</p>
-        <a href="#contact" class="btn-primary" style="display:inline-flex">
-          ${s.contact.cta}
-        </a>
-      </div>
-    </div>` : '';
-
-  const disclaimerHTML = s.disclaimer ? `
-    <div class="disclaimer-block">
-      <span class="disclaimer-icon">i</span>
-      <p>${s.disclaimer}</p>
-    </div>` : '';
-
-  dc.innerHTML = `
-    <div class="segment-problems">
-      <div class="section-label">The problem</div>
-      <div class="problem-grid">${problemsHTML}</div>
-    </div>
-    <div class="segment-how">
-      <div class="section-label">How it works</div>
-      <div class="steps">${stepsHTML}</div>
-    </div>
-    ${caseStudyHTML}
-    ${quoteHTML}
-    ${contactHTML}
-    ${disclaimerHTML}
-  `;
-}
+var segInitialized = false;
 
 function switchSeg(seg) {
-  const copy = HERO_COPY[seg];
-  if (!copy) return;
-  document.getElementById('hero-label').innerHTML = copy.label;
-  document.getElementById('hero-h1').innerHTML = copy.h1;
-  document.getElementById('hero-sub').textContent = copy.sub;
-  document.getElementById('hero-cta').textContent = copy.cta;
-  document.querySelectorAll('[data-cta="pricing"]').forEach(el => {
-    el.textContent = copy.pricingCta;
-  });
-  document.querySelectorAll('.seg-btn').forEach(btn => {
+  var c = COPY[seg];
+  if (!c) return;
+
+  document.getElementById('hero-pill').innerHTML = '<span class="dot"></span> ' + c.pill.replace('✦ ', '');
+  document.getElementById('hero-h1').innerHTML = c.h1;
+  document.getElementById('hero-sub').textContent = c.sub;
+  document.getElementById('hero-cta').textContent = c.cta;
+  document.getElementById('mock-title').textContent = c.mockTitle;
+  document.getElementById('mock-cat').textContent = c.mockCat;
+  document.getElementById('mock-notes-label').textContent = c.mockNotesLabel;
+  document.getElementById('mock-note1').textContent = c.mockNote1;
+  document.getElementById('mock-note2').textContent = c.mockNote2;
+  document.getElementById('mock-note3').textContent = c.mockNote3;
+  document.getElementById('why-quote').textContent = c.quote;
+  document.getElementById('why-author').textContent = c.quoteAuthor;
+
+  document.querySelectorAll('.seg-btn').forEach(function(btn) {
     btn.classList.toggle('active', btn.dataset.seg === seg);
   });
 
-  renderSegment(seg);
-
   if (segInitialized) {
-    const cs = document.getElementById('content-section');
-    if (cs) cs.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var how = document.getElementById('how');
+    if (how) how.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   sessionStorage.setItem('calmi-seg', seg);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.seg-btn').forEach(btn => {
-    btn.addEventListener('click', () => switchSeg(btn.dataset.seg));
+  document.querySelectorAll('.seg-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() { switchSeg(btn.dataset.seg); });
   });
-  const saved = sessionStorage.getItem('calmi-seg');
-  switchSeg(saved && HERO_COPY[saved] ? saved : 'personal');
+  var saved = sessionStorage.getItem('calmi-seg');
+  switchSeg(saved && COPY[saved] ? saved : 'personal');
   segInitialized = true;
 });
+
+// Contact form
+async function sf(e) {
+  e.preventDefault();
+  var btn = e.target.querySelector('button[type="submit"]');
+  if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+  var n = document.getElementById('fn').value.trim();
+  var em = document.getElementById('fe').value.trim();
+  var r = document.getElementById('fr').value;
+  var c = document.getElementById('fc').value;
+  var m = document.getElementById('fm').value.trim();
+  try {
+    var res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: n, email: em, role: r, clients: c, message: m })
+    });
+    if (res.ok) {
+      document.getElementById('fs').style.display = 'block';
+      document.getElementById('fer').style.display = 'none';
+      document.getElementById('cf').reset();
+    } else {
+      document.getElementById('fer').style.display = 'block';
+      document.getElementById('fs').style.display = 'none';
+    }
+  } catch (err) {
+    document.getElementById('fer').style.display = 'block';
+    document.getElementById('fs').style.display = 'none';
+  }
+  if (btn) { btn.disabled = false; btn.textContent = 'Send message'; }
+}
 </script>
 </body>
 </html>
