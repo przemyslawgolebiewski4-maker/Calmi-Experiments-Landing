@@ -266,12 +266,11 @@ select.gen-input{cursor:pointer;appearance:none}
   <div class="login-card">
     <div class="login-logo">CALMI ✦ ADMIN</div>
     <div class="login-title">Dashboard</div>
-    <div class="login-sub">Enter your admin secret to continue.</div>
+    <div class="login-sub">Enter your admin secret to continue. Use the API base URL of your app backend (e.g. on Railway), not the static marketing site, unless the API is served from the same host.</div>
     <div class="field-group">
       <div class="field-label">API URL</div>
-      <input class="field-input" id="api-url" type="text"
-        value="https://calmiexperiments.lelekstudio.com"
-        placeholder="https://calmiexperiments.lelekstudio.com"/>
+      <input class="field-input" id="api-url" type="text" value="https://calmi-experiments-production.up.railway.app"
+        placeholder="https://calmi-experiments-production.up.railway.app"/>
     </div>
     <div class="field-group">
       <div class="field-label">Admin Secret</div>
@@ -413,6 +412,14 @@ select.gen-input{cursor:pointer;appearance:none}
 // ─── STATE ───────────────────────────────────────────────
 let API = '';
 let SECRET = '';
+function escapeHtml(s) {
+  if (s == null) return '';
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
 
 // ─── AUTH ────────────────────────────────────────────────
 async function login() {
@@ -420,9 +427,11 @@ async function login() {
   const err = document.getElementById('login-error');
   API = document.getElementById('api-url').value.trim().replace(/\/$/, '');
   SECRET = document.getElementById('admin-secret').value.trim();
+  if (!API) { showErr('Enter the API base URL (your backend, e.g. on Railway).'); return; }
   if (!SECRET) { showErr('Enter your admin secret.'); return; }
   btn.disabled = true; btn.textContent = 'Connecting...';
   err.style.display = 'none';
+  const resetBtn = () => { btn.disabled = false; btn.textContent = 'Access Dashboard'; };
   try {
     const res = await fetch(`${API}/api/admin/promo/generate`, {
       method: 'POST',
@@ -430,16 +439,25 @@ async function login() {
       body: JSON.stringify({ admin_secret: SECRET, count: 0, plan: 'yearly',
         duration_days: 1, max_uses: 1, note: '__auth_check__' })
     });
-    if (res.status === 403) { showErr('Invalid admin secret.'); btn.disabled = false; btn.textContent = 'Access Dashboard'; return; }
-    // 400 (count=0 invalid) means auth passed
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('app-screen').style.display = 'block';
-    document.getElementById('topbar-url').textContent = API.replace('https://', '');
-    loadOverview();
-    loadPromos();
+    if (res.status === 403) { showErr('Invalid admin secret.'); resetBtn(); return; }
+    if (res.ok) { showErr('Unexpected server response. The auth check expects a validation error for count=0, not 200. Check the API version.'); resetBtn(); return; }
+    if (res.status === 404) { showErr('API not found at this base URL. Use the backend base URL, not the static site.'); resetBtn(); return; }
+    // 400/422: validation (e.g. count=0) after secret accepted; other 4xx = treat as not logged in
+    if (res.status === 400 || res.status === 422) {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('app-screen').style.display = 'block';
+      document.getElementById('topbar-url').textContent = API.replace(/^https?:\/\//, '');
+      loadOverview();
+      loadPromos();
+      resetBtn();
+      return;
+    }
+    if (res.status === 401) { showErr('Unauthorized. Check that this endpoint uses admin_secret and the correct URL.'); resetBtn(); return; }
+    showErr(`Could not verify credentials (HTTP ${res.status}). CORS, proxy, or API path may be wrong.`);
+    resetBtn();
   } catch(e) {
-    showErr('Server unreachable. Check the API URL.');
-    btn.disabled = false; btn.textContent = 'Access Dashboard';
+    showErr('Server unreachable. Check the API URL and CORS (browser may block file:// or cross-origin).');
+    resetBtn();
   }
 }
 function showErr(msg) {
@@ -470,12 +488,17 @@ async function loadOverview() {
   document.getElementById('recent-subs-body').innerHTML = '<div class="loading"><div class="spinner"></div><br/>Loading...</div>';
   try {
     const res = await adminFetch('/api/admin/overview');
-    if (!res.ok) { document.getElementById('stats-grid').innerHTML = '<div class="empty">Could not load stats.</div>'; return; }
+    if (!res.ok) {
+      document.getElementById('stats-grid').innerHTML = '<div class="empty">Could not load stats.</div>';
+      document.getElementById('recent-subs-body').innerHTML = '<div class="empty">Could not load.</div>';
+      return;
+    }
     const d = await res.json();
     renderStats(d);
     renderRecentSubs(d.recent_subscriptions || []);
   } catch(e) {
     document.getElementById('stats-grid').innerHTML = '<div class="empty">Server error.</div>';
+    document.getElementById('recent-subs-body').innerHTML = '<div class="empty">Server error.</div>';
   }
 }
 
@@ -510,14 +533,16 @@ function renderRecentSubs(subs) {
   if (!subs.length) { el.innerHTML = '<div class="empty">No subscriptions yet.</div>'; return; }
   el.innerHTML = `<table>
     <thead><tr><th>User</th><th>Plan</th><th>Provider</th><th>Status</th><th>Expires</th></tr></thead>
-    <tbody>${subs.map(s => `
-      <tr>
-        <td class="mono">${s.email || s.user_id?.slice(-8) || '—'}</td>
+    <tbody>${subs.map(s => {
+    const userLabel = s.email && String(s.email).trim() !== '' ? s.email
+      : (s.user_id ? s.user_id.slice(-8) : null);
+    return `<tr>
+        <td class="mono">${userLabel == null ? '—' : escapeHtml(userLabel)}</td>
         <td>${planBadge(s.plan)}</td>
         <td>${providerBadge(s.provider)}</td>
         <td>${statusBadge(s.status)}</td>
         <td class="mono" style="color:var(--muted)">${s.expires_at ? formatDate(s.expires_at) : '—'}</td>
-      </tr>`).join('')}
+      </tr>`;}).join('')}
     </tbody>
   </table>`;
 }
@@ -540,15 +565,17 @@ function renderSubscriptions(subs) {
   if (!subs.length) { el.innerHTML = '<div class="empty">No subscriptions.</div>'; return; }
   el.innerHTML = `<table>
     <thead><tr><th>User</th><th>Plan</th><th>Provider</th><th>Status</th><th>Started</th><th>Expires</th></tr></thead>
-    <tbody>${subs.map(s => `
-      <tr>
-        <td class="mono">${s.email || s.user_id?.slice(-8) || '—'}</td>
+    <tbody>${subs.map(s => {
+    const userLabel = s.email && String(s.email).trim() !== '' ? s.email
+      : (s.user_id ? s.user_id.slice(-8) : null);
+    return `<tr>
+        <td class="mono">${userLabel == null ? '—' : escapeHtml(userLabel)}</td>
         <td>${planBadge(s.plan)}</td>
         <td>${providerBadge(s.provider)}</td>
         <td>${statusBadge(s.status)}</td>
         <td class="mono" style="color:var(--muted)">${s.started_at ? formatDate(s.started_at) : '—'}</td>
         <td class="mono" style="color:var(--muted)">${s.expires_at ? formatDate(s.expires_at) : '—'}</td>
-      </tr>`).join('')}
+      </tr>`;}).join('')}
     </tbody>
   </table>`;
 }
@@ -573,7 +600,7 @@ function renderPromos(codes) {
     <thead><tr><th>Code</th><th>Plan</th><th>Duration</th><th>Uses</th><th>Note</th><th>Created</th></tr></thead>
     <tbody>${codes.map(c => `
       <tr>
-        <td class="mono" style="color:var(--purple-l);letter-spacing:1px">${c.code}</td>
+        <td class="mono" style="color:var(--purple-l);letter-spacing:1px">${c.code != null && c.code !== '' ? escapeHtml(c.code) : '—'}</td>
         <td>${planBadge(c.plan)}</td>
         <td class="mono" style="color:var(--muted)">${c.duration_days}d</td>
         <td>
@@ -581,7 +608,7 @@ function renderPromos(codes) {
             ${c.used_count} / ${c.max_uses}
           </span>
         </td>
-        <td style="color:var(--muted)">${c.note || '—'}</td>
+        <td style="color:var(--muted)">${c.note != null && c.note !== '' ? escapeHtml(c.note) : '—'}</td>
         <td class="mono" style="color:var(--muted)">${c.created_at ? formatDate(c.created_at) : '—'}</td>
       </tr>`).join('')}
     </tbody>
@@ -622,8 +649,8 @@ function showGeneratedCodes(codes, plan, days) {
   title.textContent = `✓ ${codes.length} code${codes.length > 1 ? 's' : ''} generated — ${plan}, ${days} days`;
   list.innerHTML = codes.map(code => `
     <div class="code-row">
-      <span class="code-text">${code}</span>
-      <button class="code-copy" onclick="copyCode('${code}', this)">Copy</button>
+      <span class="code-text">${escapeHtml(code)}</span>
+      <button class="code-copy" type="button">Copy</button>
     </div>
   `).join('');
   result.style.display = 'block';
@@ -656,15 +683,18 @@ function formatDate(iso) {
 
 function planBadge(plan) {
   const map = { monthly: 'badge-amber', yearly: 'badge-purple', lifetime: 'badge-green' };
-  return `<span class="badge ${map[plan] || 'badge-muted'}">${plan || '—'}</span>`;
+  const label = plan == null || plan === '' ? '—' : escapeHtml(String(plan));
+  return `<span class="badge ${map[plan] || 'badge-muted'}">${label}</span>`;
 }
 function providerBadge(p) {
   const map = { stripe: 'badge-purple', promo_code: 'badge-green', apple: 'badge-amber', google: 'badge-amber' };
-  return `<span class="badge ${map[p] || 'badge-muted'}">${p || 'stripe'}</span>`;
+  const v = p == null || p === '' ? 'stripe' : p;
+  return `<span class="badge ${map[p] || 'badge-muted'}">${escapeHtml(String(v))}</span>`;
 }
 function statusBadge(s) {
   const map = { active: 'badge-green', canceled: 'badge-red', expired: 'badge-muted' };
-  return `<span class="badge ${map[s] || 'badge-muted'}">${s || '—'}</span>`;
+  const label = s == null || s === '' ? '—' : escapeHtml(String(s));
+  return `<span class="badge ${map[s] || 'badge-muted'}">${label}</span>`;
 }
 
 let notifTimer;
@@ -675,6 +705,13 @@ function notify(msg, type = 'success') {
   clearTimeout(notifTimer);
   notifTimer = setTimeout(() => el.className = '', 3000);
 }
+
+document.getElementById('codes-list').addEventListener('click', (e) => {
+  const btn = e.target.closest('button.code-copy');
+  if (!btn) return;
+  const textEl = btn.closest('.code-row')?.querySelector('.code-text');
+  if (textEl) copyCode(textEl.textContent, btn);
+});
 </script>
 </body>
 </html>
