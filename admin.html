@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Calmi — Admin</title>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0c0c0f;
+  --surface:#131318;
+  --surface2:#1a1a22;
+  --border:#2a2a35;
+  --border-active:#7c3aed;
+  --purple:#7c3aed;
+  --purple-l:#a78bfa;
+  --purple-dim:rgba(124,58,237,0.1);
+  --green:#10b981;
+  --green-dim:rgba(16,185,129,0.1);
+  --amber:#f59e0b;
+  --amber-dim:rgba(245,158,11,0.1);
+  --red:#ef4444;
+  --red-dim:rgba(239,68,68,0.1);
+  --text:#e8e8f0;
+  --muted:#6b6b80;
+  --muted2:#3a3a48;
+  --mono:'IBM Plex Mono',monospace;
+  --sans:'IBM Plex Sans',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.6;min-height:100vh}
+
+/* LOGIN */
+#login-screen{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:var(--bg);
+  background-image:
+    radial-gradient(ellipse 60% 50% at 50% -10%,rgba(124,58,237,0.15),transparent),
+    repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,0.015) 40px,rgba(255,255,255,0.015) 41px),
+    repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,0.015) 40px,rgba(255,255,255,0.015) 41px);
+}
+.login-card{
+  width:380px;padding:40px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:0 0 0 1px rgba(124,58,237,0.05),0 40px 80px rgba(0,0,0,0.6);
+}
+.login-logo{
+  font-family:var(--mono);font-size:11px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--purple-l);margin-bottom:8px;
+}
+.login-title{font-size:22px;font-weight:600;color:var(--text);margin-bottom:4px}
+.login-sub{font-size:13px;color:var(--muted);margin-bottom:28px}
+.field-label{font-size:11px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.field-input{
+  width:100%;background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;padding:11px 14px;
+  font-family:var(--mono);font-size:13px;color:var(--text);
+  outline:none;transition:border-color 0.2s;
+}
+.field-input:focus{border-color:var(--border-active)}
+.field-group{margin-bottom:16px}
+.btn{
+  width:100%;padding:12px;background:var(--purple);color:#fff;
+  border:none;border-radius:8px;font-family:var(--sans);font-size:14px;
+  font-weight:600;cursor:pointer;transition:opacity 0.2s;margin-top:8px;
+}
+.btn:hover{opacity:0.88}
+.btn:disabled{opacity:0.4;cursor:not-allowed}
+.error-msg{
+  margin-top:12px;padding:10px 14px;
+  background:var(--red-dim);border:1px solid rgba(239,68,68,0.25);
+  border-radius:8px;font-size:13px;color:var(--red);display:none;
+}
+
+/* APP */
+#app-screen{display:none}
+.topbar{
+  height:56px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 32px;background:var(--surface);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:50;
+}
+.topbar-logo{font-family:var(--mono);font-size:13px;color:var(--purple-l);letter-spacing:1px}
+.topbar-right{display:flex;align-items:center;gap:16px}
+.topbar-user{font-size:12px;color:var(--muted)}
+.topbar-logout{
+  font-size:12px;color:var(--muted);cursor:pointer;
+  background:none;border:none;font-family:var(--sans);
+  transition:color 0.2s;
+}
+.topbar-logout:hover{color:var(--red)}
+
+.layout{display:grid;grid-template-columns:200px 1fr;min-height:calc(100vh - 56px)}
+
+/* SIDEBAR */
+.sidebar{background:var(--surface);border-right:1px solid var(--border);padding:24px 0}
+.nav-label{
+  font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--muted2);padding:0 20px;margin-bottom:8px;margin-top:20px;
+}
+.nav-label:first-child{margin-top:0}
+.nav-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 20px;cursor:pointer;
+  font-size:13px;color:var(--muted);
+  transition:all 0.15s;border-left:2px solid transparent;
+  background:none;border-right:none;border-top:none;border-bottom:none;
+  width:100%;text-align:left;font-family:var(--sans);
+}
+.nav-item:hover{color:var(--text);background:var(--surface2)}
+.nav-item.active{color:var(--purple-l);border-left-color:var(--purple);background:var(--purple-dim)}
+.nav-icon{font-size:15px;width:18px;text-align:center}
+
+/* MAIN */
+.main{padding:32px;overflow-y:auto}
+.page{display:none}
+.page.active{display:block}
+
+.page-header{margin-bottom:28px}
+.page-title{font-size:20px;font-weight:600;color:var(--text);margin-bottom:4px}
+.page-sub{font-size:13px;color:var(--muted)}
+
+/* STAT CARDS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.stat-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:20px;
+}
+.stat-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:8px}
+.stat-value{font-family:var(--mono);font-size:26px;font-weight:600;color:var(--text);margin-bottom:2px}
+.stat-sub{font-size:12px;color:var(--muted)}
+.stat-card.purple .stat-value{color:var(--purple-l)}
+.stat-card.green .stat-value{color:var(--green)}
+.stat-card.amber .stat-value{color:var(--amber)}
+
+/* TABLES */
+.table-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
+.table-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px;border-bottom:1px solid var(--border);
+}
+.table-title{font-size:14px;font-weight:600;color:var(--text)}
+.table-action{
+  font-size:12px;color:var(--purple-l);cursor:pointer;
+  background:none;border:none;font-family:var(--sans);padding:0;
+}
+table{width:100%;border-collapse:collapse}
+th{
+  padding:10px 20px;text-align:left;
+  font-size:11px;font-weight:600;text-transform:uppercase;
+  letter-spacing:1px;color:var(--muted);
+  border-bottom:1px solid var(--border);
+}
+td{
+  padding:12px 20px;font-size:13px;color:var(--text);
+  border-bottom:1px solid var(--border);
+}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--surface2)}
+.mono{font-family:var(--mono);font-size:12px}
+
+/* BADGES */
+.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
+.badge-green{background:var(--green-dim);color:var(--green)}
+.badge-amber{background:var(--amber-dim);color:var(--amber)}
+.badge-red{background:var(--red-dim);color:var(--red)}
+.badge-purple{background:var(--purple-dim);color:var(--purple-l)}
+.badge-muted{background:var(--surface2);color:var(--muted)}
+
+/* GENERATE FORM */
+.generate-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:24px;margin-bottom:24px;
+}
+.generate-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+.generate-sub{font-size:13px;color:var(--muted);margin-bottom:20px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px}
+.form-grid-wide{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.gen-input{
+  width:100%;background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;padding:9px 12px;
+  font-family:var(--mono);font-size:13px;color:var(--text);
+  outline:none;transition:border-color 0.2s;
+}
+.gen-input:focus{border-color:var(--border-active)}
+select.gen-input{cursor:pointer;appearance:none}
+.gen-btn{
+  background:var(--purple);color:#fff;border:none;border-radius:8px;
+  padding:10px 24px;font-family:var(--sans);font-size:14px;font-weight:600;
+  cursor:pointer;transition:opacity 0.2s;
+}
+.gen-btn:hover{opacity:0.88}
+.gen-btn:disabled{opacity:0.4;cursor:not-allowed}
+
+/* RESULT CODES */
+.codes-result{
+  margin-top:16px;background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;padding:16px;display:none;
+}
+.codes-result-header{
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;
+}
+.codes-result-title{font-size:12px;font-weight:600;color:var(--green)}
+.codes-copy-all{
+  font-size:12px;color:var(--muted);cursor:pointer;
+  background:none;border:none;font-family:var(--sans);
+}
+.codes-copy-all:hover{color:var(--text)}
+.codes-list{display:flex;flex-direction:column;gap:6px}
+.code-row{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:6px;padding:8px 12px;
+}
+.code-text{font-family:var(--mono);font-size:13px;color:var(--purple-l);letter-spacing:1px}
+.code-copy{
+  font-size:11px;color:var(--muted);cursor:pointer;
+  background:none;border:none;font-family:var(--sans);
+}
+.code-copy:hover{color:var(--text)}
+
+/* EMPTY STATE */
+.empty{padding:40px;text-align:center;color:var(--muted);font-size:13px}
+
+/* LOADING */
+.loading{padding:40px;text-align:center;color:var(--muted);font-size:13px}
+.spinner{
+  width:20px;height:20px;border:2px solid var(--border);
+  border-top-color:var(--purple);border-radius:50%;
+  animation:spin 0.7s linear infinite;display:inline-block;margin-bottom:8px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* NOTIFICATION */
+#notif{
+  position:fixed;bottom:24px;right:24px;z-index:999;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:12px 18px;
+  font-size:13px;color:var(--text);
+  box-shadow:0 8px 32px rgba(0,0,0,0.5);
+  transform:translateY(80px);opacity:0;
+  transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  pointer-events:none;
+}
+#notif.show{transform:translateY(0);opacity:1}
+#notif.success{border-color:rgba(16,185,129,0.4);color:var(--green)}
+#notif.error{border-color:rgba(239,68,68,0.4);color:var(--red)}
+
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .form-grid,.form-grid-wide{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div id="notif"></div>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">CALMI ✦ ADMIN</div>
+    <div class="login-title">Dashboard</div>
+    <div class="login-sub">Enter your admin secret to continue.</div>
+    <div class="field-group">
+      <div class="field-label">API URL</div>
+      <input class="field-input" id="api-url" type="text"
+        value="https://calmiexperiments.lelekstudio.com"
+        placeholder="https://calmiexperiments.lelekstudio.com"/>
+    </div>
+    <div class="field-group">
+      <div class="field-label">Admin Secret</div>
+      <input class="field-input" id="admin-secret" type="password"
+        placeholder="Your ADMIN_SECRET"
+        onkeydown="if(event.key==='Enter')login()"/>
+    </div>
+    <button class="btn" id="login-btn" onclick="login()">Access Dashboard</button>
+    <div class="error-msg" id="login-error">Invalid admin secret or server unreachable.</div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app-screen">
+  <div class="topbar">
+    <div class="topbar-logo">CALMI ✦ ADMIN</div>
+    <div class="topbar-right">
+      <div class="topbar-user" id="topbar-url"></div>
+      <button class="topbar-logout" onclick="logout()">Sign out</button>
+    </div>
+  </div>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="nav-label">Overview</div>
+      <button class="nav-item active" data-page="overview" onclick="navigate('overview',this)">
+        <span class="nav-icon">◈</span> Dashboard
+      </button>
+      <div class="nav-label">Tools</div>
+      <button class="nav-item" data-page="promo" onclick="navigate('promo',this)">
+        <span class="nav-icon">✦</span> Promo Codes
+      </button>
+      <button class="nav-item" data-page="subscriptions" onclick="navigate('subscriptions',this)">
+        <span class="nav-icon">◉</span> Subscriptions
+      </button>
+    </nav>
+    <main class="main">
+
+      <!-- OVERVIEW PAGE -->
+      <div class="page active" id="page-overview">
+        <div class="page-header">
+          <div class="page-title">Dashboard</div>
+          <div class="page-sub">Subscription and revenue overview</div>
+        </div>
+        <div class="stats-grid" id="stats-grid">
+          <div class="loading"><div class="spinner"></div></div>
+        </div>
+        <div class="table-card">
+          <div class="table-header">
+            <div class="table-title">Recent Subscriptions</div>
+            <button class="table-action" onclick="loadOverview()">↻ Refresh</button>
+          </div>
+          <div id="recent-subs-body">
+            <div class="loading"><div class="spinner"></div><br/>Loading...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROMO PAGE -->
+      <div class="page" id="page-promo">
+        <div class="page-header">
+          <div class="page-title">Promo Codes</div>
+          <div class="page-sub">Generate and manage access codes for coaches and therapists</div>
+        </div>
+
+        <div class="generate-card">
+          <div class="generate-title">Generate codes</div>
+          <div class="generate-sub">Each code activates premium for one user for the specified duration.</div>
+          <div class="form-grid">
+            <div>
+              <div class="field-label">Number of codes</div>
+              <input class="gen-input" id="gen-count" type="number" min="1" max="100" value="1"/>
+            </div>
+            <div>
+              <div class="field-label">Plan</div>
+              <select class="gen-input" id="gen-plan">
+                <option value="yearly">Yearly</option>
+                <option value="monthly">Monthly</option>
+              </select>
+            </div>
+            <div>
+              <div class="field-label">Duration (days)</div>
+              <input class="gen-input" id="gen-days" type="number" min="1" value="365"/>
+            </div>
+          </div>
+          <div class="form-grid-wide">
+            <div>
+              <div class="field-label">Max uses per code</div>
+              <input class="gen-input" id="gen-uses" type="number" min="1" value="1"/>
+            </div>
+            <div>
+              <div class="field-label">Note (internal)</div>
+              <input class="gen-input" id="gen-note" type="text" placeholder="Coach name, campaign, etc."/>
+            </div>
+          </div>
+          <button class="gen-btn" id="gen-btn" onclick="generateCodes()">Generate codes</button>
+
+          <div class="codes-result" id="codes-result">
+            <div class="codes-result-header">
+              <div class="codes-result-title" id="codes-result-title">✓ Codes generated</div>
+              <button class="codes-copy-all" onclick="copyAll()">Copy all</button>
+            </div>
+            <div class="codes-list" id="codes-list"></div>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-header">
+            <div class="table-title">All Promo Codes</div>
+            <button class="table-action" onclick="loadPromos()">↻ Refresh</button>
+          </div>
+          <div id="promo-table-body">
+            <div class="loading"><div class="spinner"></div><br/>Loading...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBSCRIPTIONS PAGE -->
+      <div class="page" id="page-subscriptions">
+        <div class="page-header">
+          <div class="page-title">Subscriptions</div>
+          <div class="page-sub">All active and historical subscriptions</div>
+        </div>
+        <div class="table-card">
+          <div class="table-header">
+            <div class="table-title">Subscriptions</div>
+            <button class="table-action" onclick="loadSubscriptions()">↻ Refresh</button>
+          </div>
+          <div id="subs-table-body">
+            <div class="loading"><div class="spinner"></div><br/>Loading...</div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script>
+// ─── STATE ───────────────────────────────────────────────
+let API = '';
+let SECRET = '';
+
+// ─── AUTH ────────────────────────────────────────────────
+async function login() {
+  const btn = document.getElementById('login-btn');
+  const err = document.getElementById('login-error');
+  API = document.getElementById('api-url').value.trim().replace(/\/$/, '');
+  SECRET = document.getElementById('admin-secret').value.trim();
+  if (!SECRET) { showErr('Enter your admin secret.'); return; }
+  btn.disabled = true; btn.textContent = 'Connecting...';
+  err.style.display = 'none';
+  try {
+    const res = await fetch(`${API}/api/admin/promo/generate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ admin_secret: SECRET, count: 0, plan: 'yearly',
+        duration_days: 1, max_uses: 1, note: '__auth_check__' })
+    });
+    if (res.status === 403) { showErr('Invalid admin secret.'); btn.disabled = false; btn.textContent = 'Access Dashboard'; return; }
+    // 400 (count=0 invalid) means auth passed
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app-screen').style.display = 'block';
+    document.getElementById('topbar-url').textContent = API.replace('https://', '');
+    loadOverview();
+    loadPromos();
+  } catch(e) {
+    showErr('Server unreachable. Check the API URL.');
+    btn.disabled = false; btn.textContent = 'Access Dashboard';
+  }
+}
+function showErr(msg) {
+  const e = document.getElementById('login-error');
+  e.textContent = msg; e.style.display = 'block';
+}
+function logout() {
+  SECRET = ''; API = '';
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('app-screen').style.display = 'none';
+  document.getElementById('admin-secret').value = '';
+}
+
+// ─── NAVIGATION ──────────────────────────────────────────
+function navigate(page, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById(`page-${page}`).classList.add('active');
+  el.classList.add('active');
+  if (page === 'subscriptions') loadSubscriptions();
+  if (page === 'promo') loadPromos();
+  if (page === 'overview') loadOverview();
+}
+
+// ─── OVERVIEW ────────────────────────────────────────────
+async function loadOverview() {
+  document.getElementById('stats-grid').innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+  document.getElementById('recent-subs-body').innerHTML = '<div class="loading"><div class="spinner"></div><br/>Loading...</div>';
+  try {
+    const res = await adminFetch('/api/admin/overview');
+    if (!res.ok) { document.getElementById('stats-grid').innerHTML = '<div class="empty">Could not load stats.</div>'; return; }
+    const d = await res.json();
+    renderStats(d);
+    renderRecentSubs(d.recent_subscriptions || []);
+  } catch(e) {
+    document.getElementById('stats-grid').innerHTML = '<div class="empty">Server error.</div>';
+  }
+}
+
+function renderStats(d) {
+  const g = document.getElementById('stats-grid');
+  g.innerHTML = `
+    <div class="stat-card purple">
+      <div class="stat-label">Active Premium</div>
+      <div class="stat-value">${d.active_subscriptions ?? '—'}</div>
+      <div class="stat-sub">users with active plan</div>
+    </div>
+    <div class="stat-card green">
+      <div class="stat-label">MRR (est.)</div>
+      <div class="stat-value">$${d.mrr_usd ?? '—'}</div>
+      <div class="stat-sub">monthly recurring revenue</div>
+    </div>
+    <div class="stat-card amber">
+      <div class="stat-label">Promo Codes Used</div>
+      <div class="stat-value">${d.promo_codes_used ?? '—'}</div>
+      <div class="stat-sub">of ${d.promo_codes_total ?? '—'} generated</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total Users</div>
+      <div class="stat-value">${d.total_users ?? '—'}</div>
+      <div class="stat-sub">registered accounts</div>
+    </div>
+  `;
+}
+
+function renderRecentSubs(subs) {
+  const el = document.getElementById('recent-subs-body');
+  if (!subs.length) { el.innerHTML = '<div class="empty">No subscriptions yet.</div>'; return; }
+  el.innerHTML = `<table>
+    <thead><tr><th>User</th><th>Plan</th><th>Provider</th><th>Status</th><th>Expires</th></tr></thead>
+    <tbody>${subs.map(s => `
+      <tr>
+        <td class="mono">${s.email || s.user_id?.slice(-8) || '—'}</td>
+        <td>${planBadge(s.plan)}</td>
+        <td>${providerBadge(s.provider)}</td>
+        <td>${statusBadge(s.status)}</td>
+        <td class="mono" style="color:var(--muted)">${s.expires_at ? formatDate(s.expires_at) : '—'}</td>
+      </tr>`).join('')}
+    </tbody>
+  </table>`;
+}
+
+// ─── SUBSCRIPTIONS ───────────────────────────────────────
+async function loadSubscriptions() {
+  document.getElementById('subs-table-body').innerHTML = '<div class="loading"><div class="spinner"></div><br/>Loading...</div>';
+  try {
+    const res = await adminFetch('/api/admin/subscriptions');
+    if (!res.ok) { document.getElementById('subs-table-body').innerHTML = '<div class="empty">Could not load.</div>'; return; }
+    const data = await res.json();
+    renderSubscriptions(data.subscriptions || []);
+  } catch(e) {
+    document.getElementById('subs-table-body').innerHTML = '<div class="empty">Server error.</div>';
+  }
+}
+
+function renderSubscriptions(subs) {
+  const el = document.getElementById('subs-table-body');
+  if (!subs.length) { el.innerHTML = '<div class="empty">No subscriptions.</div>'; return; }
+  el.innerHTML = `<table>
+    <thead><tr><th>User</th><th>Plan</th><th>Provider</th><th>Status</th><th>Started</th><th>Expires</th></tr></thead>
+    <tbody>${subs.map(s => `
+      <tr>
+        <td class="mono">${s.email || s.user_id?.slice(-8) || '—'}</td>
+        <td>${planBadge(s.plan)}</td>
+        <td>${providerBadge(s.provider)}</td>
+        <td>${statusBadge(s.status)}</td>
+        <td class="mono" style="color:var(--muted)">${s.started_at ? formatDate(s.started_at) : '—'}</td>
+        <td class="mono" style="color:var(--muted)">${s.expires_at ? formatDate(s.expires_at) : '—'}</td>
+      </tr>`).join('')}
+    </tbody>
+  </table>`;
+}
+
+// ─── PROMO CODES ─────────────────────────────────────────
+async function loadPromos() {
+  document.getElementById('promo-table-body').innerHTML = '<div class="loading"><div class="spinner"></div><br/>Loading...</div>';
+  try {
+    const res = await adminFetch('/api/admin/promo/list');
+    if (!res.ok) { document.getElementById('promo-table-body').innerHTML = '<div class="empty">Could not load.</div>'; return; }
+    const data = await res.json();
+    renderPromos(data.codes || []);
+  } catch(e) {
+    document.getElementById('promo-table-body').innerHTML = '<div class="empty">Server error.</div>';
+  }
+}
+
+function renderPromos(codes) {
+  const el = document.getElementById('promo-table-body');
+  if (!codes.length) { el.innerHTML = '<div class="empty">No promo codes yet. Generate some above.</div>'; return; }
+  el.innerHTML = `<table>
+    <thead><tr><th>Code</th><th>Plan</th><th>Duration</th><th>Uses</th><th>Note</th><th>Created</th></tr></thead>
+    <tbody>${codes.map(c => `
+      <tr>
+        <td class="mono" style="color:var(--purple-l);letter-spacing:1px">${c.code}</td>
+        <td>${planBadge(c.plan)}</td>
+        <td class="mono" style="color:var(--muted)">${c.duration_days}d</td>
+        <td>
+          <span class="${c.used_count >= c.max_uses ? 'badge badge-muted' : 'badge badge-green'}">
+            ${c.used_count} / ${c.max_uses}
+          </span>
+        </td>
+        <td style="color:var(--muted)">${c.note || '—'}</td>
+        <td class="mono" style="color:var(--muted)">${c.created_at ? formatDate(c.created_at) : '—'}</td>
+      </tr>`).join('')}
+    </tbody>
+  </table>`;
+}
+
+async function generateCodes() {
+  const btn = document.getElementById('gen-btn');
+  const count = parseInt(document.getElementById('gen-count').value) || 1;
+  const plan = document.getElementById('gen-plan').value;
+  const days = parseInt(document.getElementById('gen-days').value) || 365;
+  const uses = parseInt(document.getElementById('gen-uses').value) || 1;
+  const note = document.getElementById('gen-note').value.trim();
+  if (count < 1 || count > 100) { notify('Count must be 1–100.', 'error'); return; }
+  btn.disabled = true; btn.textContent = 'Generating...';
+  try {
+    const res = await fetch(`${API}/api/admin/promo/generate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ admin_secret: SECRET, count, plan, duration_days: days, max_uses: uses, note })
+    });
+    const data = await res.json();
+    if (!res.ok) { notify(data.detail || 'Error generating codes.', 'error'); return; }
+    showGeneratedCodes(data.codes, plan, days);
+    loadPromos();
+    notify(`${data.count} code${data.count > 1 ? 's' : ''} generated.`, 'success');
+  } catch(e) {
+    notify('Server error.', 'error');
+  } finally {
+    btn.disabled = false; btn.textContent = 'Generate codes';
+  }
+}
+
+function showGeneratedCodes(codes, plan, days) {
+  const result = document.getElementById('codes-result');
+  const list = document.getElementById('codes-list');
+  const title = document.getElementById('codes-result-title');
+  title.textContent = `✓ ${codes.length} code${codes.length > 1 ? 's' : ''} generated — ${plan}, ${days} days`;
+  list.innerHTML = codes.map(code => `
+    <div class="code-row">
+      <span class="code-text">${code}</span>
+      <button class="code-copy" onclick="copyCode('${code}', this)">Copy</button>
+    </div>
+  `).join('');
+  result.style.display = 'block';
+  result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function copyCode(code, btn) {
+  navigator.clipboard.writeText(code).then(() => {
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 1500);
+  });
+}
+
+function copyAll() {
+  const codes = [...document.querySelectorAll('.code-text')].map(el => el.textContent).join('\n');
+  navigator.clipboard.writeText(codes).then(() => notify('All codes copied.', 'success'));
+}
+
+// ─── HELPERS ─────────────────────────────────────────────
+function adminFetch(path, opts = {}) {
+  const url = `${API}${path}`;
+  const headers = { 'Content-Type': 'application/json', 'X-Admin-Secret': SECRET, ...(opts.headers || {}) };
+  return fetch(url, { ...opts, headers });
+}
+
+function formatDate(iso) {
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+}
+
+function planBadge(plan) {
+  const map = { monthly: 'badge-amber', yearly: 'badge-purple', lifetime: 'badge-green' };
+  return `<span class="badge ${map[plan] || 'badge-muted'}">${plan || '—'}</span>`;
+}
+function providerBadge(p) {
+  const map = { stripe: 'badge-purple', promo_code: 'badge-green', apple: 'badge-amber', google: 'badge-amber' };
+  return `<span class="badge ${map[p] || 'badge-muted'}">${p || 'stripe'}</span>`;
+}
+function statusBadge(s) {
+  const map = { active: 'badge-green', canceled: 'badge-red', expired: 'badge-muted' };
+  return `<span class="badge ${map[s] || 'badge-muted'}">${s || '—'}</span>`;
+}
+
+let notifTimer;
+function notify(msg, type = 'success') {
+  const el = document.getElementById('notif');
+  el.textContent = msg;
+  el.className = `show ${type}`;
+  clearTimeout(notifTimer);
+  notifTimer = setTimeout(() => el.className = '', 3000);
+}
+</script>
+</body>
+</html>
